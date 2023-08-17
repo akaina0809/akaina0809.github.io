@@ -1,0 +1,73 @@
+
+#loadingLogo {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background: rgb(255,138,0);
+    background: linear-gradient(90deg, rgba(255,138,0,1) 0%, rgba(237,128,0,1) 100%);
+  z-index: 10000;
+  display: none;
+}
+#loadingLogo.show {
+	display: block;
+	animation: fadein-keyframes 1s ease 2.5s 1 forwards;
+}
+#loadingLogo .loading-anime-img {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  max-width: 380px;
+}
+#loadingLogo .loading-anime-line {
+  background-color: #fff;
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  top: 75%;
+  transform: scale(0, 1);
+  animation: loading 1.5s ease 0.5s 1 forwards;
+}
+#loadingLogo .loading-anime-line:before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #1C9CE3;
+    position: absolute;
+    top: 50%;
+	 left: 0;
+    transform: translateY(-50%);
+    border-radius: 9999px;
+}
+#loadingLogo .loading-anime-line:after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #1C9CE3;
+    position: absolute;
+    top: 50%;
+	 right: 0;
+    transform: translateY(-50%);
+    border-radius: 9999px;
+}
+@keyframes loading {
+  0% {
+    transform: scale(0, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes fadein-keyframes {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }

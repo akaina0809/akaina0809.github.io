@@ -1,0 +1,21 @@
+body {
+  background: #000;
+}
+.video-wrap {
+  position: relative;
+}
+video {
+  display: block;
+  margin: 0 0 0 auto;
+}
+p {
+  font-family: serif;          
+  color: #fff;
+  font-size: 400%;
+  position: absolute;
+  left: 30%;
+  top: 200px;
+  z-index: 1;
+}
+
+/*/https://youtu.be/SlRfwbD2riE/*/

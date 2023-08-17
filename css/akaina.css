@@ -1,0 +1,71 @@
+body {
+  background-color: rgb(223, 255, 249);
+  color: #000000;
+}
+
+textarea {
+  resize: vertical;
+}
+
+sama{
+  color: #000000;
+}
+
+a.title_text {
+  color: #050004;
+  text-decoration:none;
+}
+
+span.footer_text {
+  color: #000000;
+  text-align: center; 
+}
+
+a.footer_text {
+  color: #000000;
+  text-align: center; 
+}
+
+span.header_text {
+  padding-left: 10px;
+  color: #000000;
+}
+
+h2{
+  padding: 0.5em;
+  color: #000000;
+  background-color: #ffffff;
+  border-left: solid 5px #7b68ee;
+}
+
+div.right {
+    text-align: right; 
+    background-color: #ffffff;
+}
+
+div.toto {
+    background-color: #ffffff;
+}
+
+div.github_etc {
+    text-align: right; 
+}
+
+div.pack_flame {
+    background-color: #f6dfff;
+	padding: 10px;
+	display: flex;
+	margin-bottom: 5px;
+}
+
+div.text_content {
+	padding-left: 10px;
+}
+
+span.pack_name {
+	font-size: 130%;
+}
+
+a {
+	color: #800000;
+}

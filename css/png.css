@@ -1,0 +1,273 @@
+
+/*========= ローディング画面のためのCSS ===============*/
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+/*========= 画面遷移のためのCSS ===============*/
+
+/*画面遷移アニメーション*/
+.splashbg{
+    display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+	display:block;
+	animation-name:PageAnime;
+	animation-duration:1.2s;
+	animation-timing-function:ease-in-out;
+	animation-fill-mode:forwards;
+    content: "";
+    position:fixed;
+	z-index: 999;
+    width: 50%;
+    height: 100vh;
+    top: 0;
+	left: 0;
+    transform: translateX(-300%) skewX(-45deg);
+    background-color: #333;/*伸びる背景色の設定*/
+}
+
+@keyframes PageAnime{
+	0% {
+		transform-origin:left;
+		transform:translateX(-300%) skewX(-45deg);
+	}
+	100% {
+		transform-origin:left;
+		transform:translateX(500%) skewX(-45deg);
+	}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+#container{
+	opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+	animation-name:PageAnimeAppear;
+	animation-duration:1s;
+	animation-delay: 0.6s;
+	animation-fill-mode:forwards;
+	opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+	0% {
+	opacity: 0;
+	}
+	100% {
+	opacity: 1;
+}
+}
+
+
+ /*========= 背景動画設定のCSS ===============*/
+
+/*header設定*/
+#header{
+    position: relative;/*h1の中央寄せ配置の起点とするためのrelative*/
+    height: 100vh;/*高さを全画面にあわせる*/
+} 
+
+#video-area{
+    position: fixed;
+    z-index: -1;/*最背面に設定*/
+    top: 0;
+    right:0;
+    left:0;
+    bottom:0;
+    overflow: hidden;
+}
+
+#video {
+    /*天地中央配置*/
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*縦横幅指定*/
+    width: 177.77777778vh; /* 16:9 の幅→16 ÷ 9＝ 177.77% */
+    height: 56.25vw; /* 16:9の幅 → 9 ÷ 16 = 56.25% */
+    min-height: 100%;
+    min-width: 100%;
+}
+
+/*見出し設定*/
+h1{
+    /*要素の配置*/
+    position:absolute;
+    /*要素を天地中央寄せ*/
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    /*見た目の調整*/
+    color:#fff;
+    text-shadow: 0 0 15px #666;
+}
+top_0{
+    position: absolute;
+}
+color_00{
+background:#fff;
+}
+
+color_01{
+background: #0481A2; 	color:#fff;
+}
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+
+#splash {
+    /*fixedで全面に固定*/
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background:#333;
+	text-align:center;
+	color:#fff;
+}
+
+/* Loadingバー中央配置　*/
+#splash_text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    z-index: 999;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+}
+
+/*IE11対策用バーの線の高さ※対応しなければ削除してください*/
+#splash_text svg{
+    height: 2px;
+}
+
+
+
+#splash {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #333;
+	z-index: 9999999;
+	text-align:center;
+	color:#fff;
+}
+
+#splash-logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*========= ページトップのためのCSS ===============*/
+/*リンクを右下に固定*/
+#page-top {
+	position: fixed;
+	right: 10px;
+	bottom:30px;
+	z-index: 2;
+    /*はじめは非表示*/
+	opacity: 0;
+	transform: translateY(150px);
+}
+
+/*　上に上がる動き　*/
+#page-top.UpMove{
+	animation: UpAnime 0.5s forwards;
+}
+
+@keyframes UpAnime{
+  from {
+    opacity: 0;
+	transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+	transform: translateY(0);
+  }
+}
+
+/*　下に下がる動き　*/
+#page-top.DownMove{
+	animation: DownAnime 0.5s forwards;
+}
+
+@keyframes DownAnime{
+  from {
+  	opacity: 1;
+	transform: translateY(0);
+  }
+  to {
+  	opacity: 1;
+	transform: translateY(150px);
+  }
+}
+
+/*画像の切り替えと動き*/
+#page-top a {
+    /*aタグの形状*/
+	display: block;
+	width: 100px;
+	height: 100px;
+	color: #333;
+	text-align: center;
+	text-transform: uppercase; 
+	text-decoration: none;
+	font-size:0.6rem;
+    /*背景画像の指定*/
+	background: url("../images/app_icon.png") no-repeat center;
+	background-size: contain;
+}
+
+#page-top.floatAnime a{
+	width: 100px;
+	height: 130px;
+    /*背景画像の指定*/
+	background: url("../images/Amber.png") no-repeat center;
+	background-size: contain;
+    /*アニメーションの指定*/
+	animation: floatAnime 2s linear infinite;
+	opacity: 0;
+}
+
+@keyframes floatAnime {
+  0% { transform: translateX(0); opacity: 0; }
+  25% { transform: translateX(-6px);opacity: 1; }
+  50% { transform: translateX(0) }
+  100% { transform: translateX(6px);opacity: 1; }
+}
+
+/*Page Topと書かれたテキストの位置*/
+#page-top span{
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+	color: #666;
+}
+/*検証のためのCSS*/
+section{
+padding: 500px 0;
+}
