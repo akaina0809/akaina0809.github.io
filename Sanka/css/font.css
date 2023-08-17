@@ -1,0 +1,72 @@
+font1 {
+font-family: 'Tsukimi Rounded', sans-serif;
+}
+
+font2 {
+ font-family: "Nico Moji"; 
+}
+
+font3{
+margin:0px; padding:0px;
+font-family: 'myfont', sans-serif;
+}
+
+font4{
+font-family: 'Cherry Bomb One', cursive;
+}
+
+font5{
+margin:0px; padding:0px;
+font-family: 'myfont_1', sans-serif;
+}
+
+font6{
+margin:0px; padding:0px;
+font-family: 'myfont_2', sans-serif;
+}
+
+font7{
+margin:0px; padding:0px;
+font-family: 'myfont_3', sans-serif;
+}
+
+big{
+font-size: 50px;
+margin:0px;
+padding:0px;
+font-family: 'myfont_1', sans-serif;
+}
+
+.sample {
+    
+width: "10px";
+
+height: "10px";
+
+}
+
+@font-face {
+  font-family: "myfont";
+  src: url("../fonts/えり字.otf") format("opentype");
+}
+@font-face {
+  font-family: "myfont_1";
+  src: url("../fonts/memoir.otf") format("opentype");
+}
+@font-face {
+  font-family: "myfont_2";
+  src: url("../fonts/RiiT_F.otf") format("opentype");
+}
+@font-face {
+  font-family: "myfont_3";
+  src: url("../fonts/Pomeranian-Regular.ttf") format("truetype");
+}
+
+/*/
+拡張子フォーマット名
+.woff;woff
+.woff2:woff2
+.ttf:truetype
+.otf:opentype
+.svg:svg
+/*/
