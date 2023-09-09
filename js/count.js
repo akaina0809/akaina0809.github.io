@@ -1,6 +1,7 @@
 function count(){
-  var thisCount = $("#count").html();
+  var  thisCount = Number(thisCount);
+    /*/ thisCount = $("#count").html();/*/
       thisCount = Number(thisCount);
-      thisCount = thisCount + 1;
-  $("#count").html(thisCount);
+      thisCount = thisCount + 1;/*/
+  $("#count").html(thisCount);/*/
 }
