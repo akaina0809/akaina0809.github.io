@@ -10,7 +10,7 @@ function convert() {
         if (ev.message.startsWith("!akaina0807")) {
           ev.cancel = true;
           const player = ev.sender;
-          player.runCommandAsync('tellraw @s {"rawtext":[{"text":"<server>これは赫稲が作成したサイトから作れます。アプデで使えなくなった場合はYouTubeまたはコロニーにて報告をお願いします。discord Twitter でも構いません。"}]}');
+          player.runCommandAsync('tellraw @s {"rawtext":[{"text":"\n‪-----------------------\n日本語:Japanese\n<server>これは赫稲が作成したサイトから作れます。アプデで使えなくなった場合はYouTubeにて報告をお願いします。discord Twitter TikTokでも構いません。\n‪英語:English\n<server>This can be created from the site created by Keine. If you can no longer use the app with the update, please report it on YouTube. Discord Twitter TikTok is also fine.\n-----------------------\n"}]}');
         `
 
   if (name === '') {
