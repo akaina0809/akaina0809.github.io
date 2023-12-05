@@ -1,0 +1,48 @@
+color_ao {
+	color: #0f2a8c;
+}
+color_ao_0 {
+	color: #0f5e8c;
+}
+
+
+
+
+.button-062 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 25px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: none;
+    border-radius: 25px;
+    background-color: #0000ff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.button-062:hover {
+    background-color: 0000ff;
+}
+
+.button-062::before {
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+    background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.6%208.4V1.2H8.4v7.198h-6l9.6%209.6%209.6-9.6h-6zM0%2020.4h24v2.4H0v-2.4z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E') no-repeat center;
+    content: '';
+}
+
+
+
+/*** 常に右下に表示 ***/
+
+
+
+/**
+
+<div class="fixed-div"><a href="https://discord.gg/EhKSAMt8fM"><color_ao>Download</color_ao></a></div>
+
+**/
