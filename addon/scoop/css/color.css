@@ -1,0 +1,162 @@
+color_ao {
+	color: #0f2a8c;
+}
+color_ao_0 {
+	color: #0f5e8c;
+}
+color_ao_0 {
+	color: #0f5e8c;
+}
+
+
+
+color_ff0000 {
+    color: #ff0000;
+} 
+
+color_4bd126 {
+    bottom: .3em;
+    color: #4bd126;
+} 
+.loading-015 {
+    transform-style: preserve-3d;
+    animation: animation-loading-015 3s infinite forwards;
+}
+
+.loading-015 span {
+    position: absolute;
+    top: -24px;
+    left: -24px;
+    width: 48px;
+    height: 48px;
+    border: 1px solid #2589d0;
+    background-color: #fff;
+}
+
+.loading-015 span:nth-of-type(1) {
+    transform: translateZ(24px);
+}
+
+.loading-015 span:nth-of-type(2) {
+    transform: rotateY(180deg) translateZ(24px);
+}
+
+.loading-015 span:nth-of-type(3) {
+    transform: rotateY(-90deg) translateZ(24px);
+}
+
+.loading-015 span:nth-of-type(4) {
+    transform: rotateY(90deg) translateZ(24px);
+}
+
+.loading-015 span:nth-of-type(5) {
+    transform: rotateX(-90deg) translateZ(24px)
+}
+
+.loading-015 span:nth-of-type(6) {
+    transform: rotateX(90deg) translateZ(24px);
+}
+
+@keyframes animation-loading-015 {
+    0% {
+        transform: rotateY(0deg) rotateZ(0deg);
+    }
+    20% {
+        transform: rotateY(90deg) rotateZ(0deg);
+    }
+    40% {
+        transform: rotateX(45deg) rotateZ(45deg);
+    }
+    60% {
+        transform: rotateX(90deg) rotateY(180deg) rotateX(90deg);
+    }
+    80% {
+        transform: rotateX(310deg) rotateZ(230deg)
+    }
+    100% {
+        transform: rotateX(360deg) rotateZ(360deg)
+    }
+}
+.button-062 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 25px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: none;
+    border-radius: 25px;
+    background-color: #0000ff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.button-062:hover {
+    background-color: 0000ff;
+}
+
+.button-062::before {
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+    background: url('data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.6%208.4V1.2H8.4v7.198h-6l9.6%209.6%209.6-9.6h-6zM0%2020.4h24v2.4H0v-2.4z%22%20fill%3D%22%23fff%22%2F%3E%3C%2Fsvg%3E') no-repeat center;
+    content: '';
+}
+
+.button-058 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-width: 250px;
+    margin: 2.5em auto;
+    padding: .9em 2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #0000ff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.button-058:hover {
+    background-color: #1579c0;
+}
+
+.button-058 span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -1.75em;
+    left: -2.5em;
+    padding: 1em 1.5em;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #0000ff;
+    font-size: .7em;
+}
+
+.button-058 span::after {
+    position: absolute;
+    bottom: .3em;
+    right: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: #fff;
+    clip-path: polygon(40% 0, 100% 100%, 0% 90%);
+    content: '';
+}
+
+
+
+/*** 常に右下に表示 ***/
+
+
+
+/**
+
+<div class="fixed-div"><a href="https://discord.gg/EhKSAMt8fM"><color_ao>Download</color_ao></a></div>
+
+**/
