@@ -1,5 +1,33 @@
-.b56 {
+.button-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    margin:0 auto;
+    padding: .9em 2em;
+    border: none;
+    border-bottom: solid 5px #0059a0;
+    border-radius: 5px;
     background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+    transition: .5s ease;
+}
+
+.button-4::after {
+    transform: rotate(45deg);
+    width: 5px;
+    height: 5px;
+    margin-left: 10px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    content: '';
+}
+
+.button-4:hover {
+    transform: translateY(3px);
+    border-bottom-width: 2px;
 }
 
 
