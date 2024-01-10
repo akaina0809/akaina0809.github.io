@@ -1,4 +1,4 @@
-.button-20 {
+.button-56 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,12 +9,12 @@
     background-color: #2589d0;
 }
 
-.button-20:hover {
+.button-56:hover {
     border: 1px solid #2589d0;
     background-color: #fff;
 }
 
-.button-20:hover path {
+.button-56:hover path {
     fill: #2589d0;
 }
 
