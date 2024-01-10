@@ -1,3 +1,30 @@
+.button-56 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+    margin: 0 auto;
+    padding: .9em 2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #2589d0;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+.button-56:hover {
+    background-color: #1579c0;
+}
+
+.button-56::before {
+    width: 1.25em;
+    height: 1.25em;
+    margin-right: 8px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 3H21C21.5523 3 22 3.44772 22 4V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3ZM12.0606 11.6829L5.64722 6.2377L4.35278 7.7623L12.0731 14.3171L19.6544 7.75616L18.3456 6.24384L12.0606 11.6829Z' fill='%23fff'%3E%3C/path%3E%3C/svg%3E");
+    content: '';
+}
+
 /*========= ローディング画面のためのCSS ===============*/
 #splash {
 	position: fixed;
