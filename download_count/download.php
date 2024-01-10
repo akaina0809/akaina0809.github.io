@@ -47,7 +47,7 @@ $download_url = array(
 //-----------------------------　設定箇所（START）　-------------------------------
 //ダウンロードファイルの絶対パス（http～）記述
 $download_url = array(
-'1' => 'http://xxxxx.xxxxxx/xxxxx.zip',
+'1' => 'https://akaina0809.github.io/dsito/download_count/download.php?download=1',
 
 );
 
