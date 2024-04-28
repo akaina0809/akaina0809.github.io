@@ -28,7 +28,7 @@ count9 {
 
 @font-face {
     font-family: 'HandwritingFont';
-    src: url('/Font/omakebold.ttf') format('truetype'); /* フォントファイルのパスを指定 */
+    src: url('./Font/omakebold.ttf') format('truetype'); /* フォントファイルのパスを指定 */
     /* 他のフォント形式に対応する場合は、ここに追加します */
 }
 
