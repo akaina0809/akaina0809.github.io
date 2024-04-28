@@ -29,6 +29,38 @@
   blockok{background: #000000;	color: #ffffff;	/*全体の文字色*/}
   .blockok{background: #000000;	color: #ffffff;	/*全体の文字色*/}
   </style>
+<style>
+/* フェードインアニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* フェードインアニメーションを適用 */
+.fadeIn li {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* スタイリング */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
 </head>
 
 
@@ -42,6 +74,7 @@
 </ul>
 </nav>
 </header>
+    
 
 
 <section>
