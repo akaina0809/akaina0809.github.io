@@ -76,7 +76,7 @@ header {
 }
 #menubar li a {
 	text-decoration: none;
-	padding: 15px 30px;	/*各メニュー内の余白。上下に15px、左右に30pxあけるという意味。*/
+	padding: 10px 30px;	/*各メニュー内の余白。上下に15px、左右に30pxあけるという意味。*/
 	color: #fff;	/*文字色*/
 }
 /*マウスオン時の設定*/
@@ -120,12 +120,12 @@ header {
 .list {
 	overflow: hidden;
 	border-bottom: 1px solid #ccc;	/*下線の幅、線種、色*/
-	padding: 20px;	/*ボックス内の余白*/
+	padding: 10px;	/*ボックス内の余白*/
 }
 /*h4見出しの設定*/
 .list h4 {
 	color: #7117c4;	/*文字色*/
-	font-size: 16px;	/*文字サイズ。少し大きくしています。*/
+	font-size: 20px;	/*文字サイズ。少し大きくしています。*/
 }
 /*画像の設定*/
 .list img {
