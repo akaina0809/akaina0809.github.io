@@ -13,15 +13,19 @@
 <!--[if lt IE 9]>
 <![endif]-->
     <style>
-    /* ローダーのスタイル */
-    .loader {
-      font-size: 24px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      animation: bounce 0.5s infinite alternate; /* 上下に飛び跳ねるアニメーションを適用 */
-    }
+        /* 列全体を水平方向に中央揃えするためのスタイル */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* ビューポートの高さいっぱいに表示 */
+        }
+
+        /* 中央に配置するテキストのスタイル */
+        .text {
+            font-size: 24px;
+            color: red; /* テキストの色を赤に設定 */
+        }
 
     /* 上下に飛び跳ねるアニメーション */
     @keyframes bounce {
