@@ -1,5 +1,5 @@
-const owner = 'akaina0112'; // GitHubリポジトリの所有者名
-const repo = 'Test'; // GitHubリポジトリの名前
+const owner = 'akaina0809'; // GitHubリポジトリの所有者名
+const repo = 'dsito'; // GitHubリポジトリの名前
 const fileNames = [
     '20230704_185437.jpg',
     'example.zip',
