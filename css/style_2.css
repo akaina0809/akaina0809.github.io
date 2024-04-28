@@ -54,7 +54,7 @@ a:hover {
 /*headerブロック*/
 header {
 	text-align: center;		/*headerの中身をセンタリングさせる設定*/
-	height: 150px;			/*headerの高さ*/
+	height: 50px;			/*headerの高さ*/
 	background: #7117c4;	/*headerの背景色*/
 }
 /*ロゴ画像設定*/
