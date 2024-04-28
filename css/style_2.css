@@ -14,12 +14,12 @@ body {
 	margin: 0px;
 	padding: 0px;
 	color: #666;	/*全体の文字色*/
-      //  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+      //*/  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	font-size: 14px;	/*文字サイズ*/
 	line-height: 2;		/*行間*/
 	-webkit-text-size-adjust: none;
-	//background: #7117c4;	/*背景色（古いブラウザ用）*/
+	/*/background: #7117c4;	/*背景色（古いブラウザ用）*/
 	background: linear-gradient(#7117c4 150px, #fff 150px);	/*トップページ以外の背景設定。画面の上から150pxまでが#7117c4で、そこからすぐ#fffの白色に切り替える内容。*/
 }
 body#top {
@@ -55,7 +55,7 @@ a:hover {
 header {
 	text-align: center;		/*headerの中身をセンタリングさせる設定*/
 	height: 150px;			/*headerの高さ*/
-	//background: #7117c4;	/*headerの背景色*/
+	/*background: #7117c4;	/*headerの背景色*/
 }
 /*ロゴ画像設定*/
 #logo  img {
