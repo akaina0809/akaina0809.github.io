@@ -13,17 +13,19 @@
 <!--[if lt IE 9]>
 <![endif]-->
     <style>
-        /* 中央に配置するテキストのスタイル */
-        .text {
-            font-size: 24px;
-            color: red; /* テキストの色を赤に設定 */
-        }
+  .container {
+    text-align: center; /* テキストを中央に配置 */
+  }
 
-    /* 上下に飛び跳ねるアニメーション */
-    @keyframes bounce {
-      0% { transform: translate(-50%, -50%) translateY(0); }
-      100% { transform: translate(-50%, -50%) translateY(-20px); }
-    }
+  .text {
+    display: inline-block; /* テキストの幅に合わせてブロック化 */
+    animation: bounce 0.5s alternate infinite ease-in-out; /* アニメーションを適用 */
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
   </style>
 </head>
 
@@ -46,7 +48,9 @@
 <table class="ta1">
 <tr>
 <th colspan="2" class="tamidashi">
+  <div class="container">
         <div class="text">アドオン一覧(2023～)</div>
+  </div>
 </th>
 </tr>
 <tr>
