@@ -20,7 +20,7 @@ body {
 	line-height: 2;		/*行間*/
 	-webkit-text-size-adjust: none;
 	/*/background: #7117c4;	/*背景色（古いブラウザ用）*/
-	background: linear-gradient(#7117c4 50px, #fff 150px);	/*トップページ以外の背景設定。画面の上から150pxまでが#7117c4で、そこからすぐ#fffの白色に切り替える内容。*/
+	background: linear-gradient(#7117c4 50px, #fff 2000px);	/*トップページ以外の背景設定。画面の上から150pxまでが#7117c4で、そこからすぐ#fffの白色に切り替える内容。*/
 }
 body#top {
 	background: linear-gradient(#7117c4 450px, #fff 450px);	/*トップページの背景設定。画面の上から450pxまでが#7117c4で、そこからすぐ#fffの白色に切り替える内容。*/
@@ -142,7 +142,8 @@ header {
 footer {
 	clear: both;
 	text-align: center;	/*文字をセンタリング*/
-	padding: 20px 0px;	/*左から、上下、左右への余白*/
+	padding: 20px 0px;		/*headerの高さ*/
+	background: #7117c4;		/*左から、上下、左右への余白*/
 }
 footer a {
 	text-decoration: none;
