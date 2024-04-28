@@ -55,8 +55,7 @@ function displayReleaseInfo(fileDataArray) {
         const releaseInfoHTML = `
             <div class="release-info">
                 <div class="download-info">
-                    <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button>
-                    <p>: ${fileData.downloadCount}${set}</p>
+                    <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button><a>: ${fileData.downloadCount}${set}</a>
                 </div>
             </div>`;
         document.getElementById(`release-info${index + 1}`).innerHTML = releaseInfoHTML;
