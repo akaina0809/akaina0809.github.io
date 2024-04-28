@@ -7,4 +7,4 @@ function hideLoader() {
 }
 
 // 5秒後にhideLoader関数を実行する
-setTimeout(hideLoader, 5000); // 5000ミリ秒（5秒）後にhideLoader関数を実行
+setTimeout(hideLoader, 2000); // 5000ミリ秒（5秒）後にhideLoader関数を実行
