@@ -3,7 +3,7 @@ const repo = 'dsito'; // GitHubリポジトリの名前
 const fileNames = [
     '20230704_185437.jpg',
     'example.zip',
-    'sample.txt',
+    'skin_v2.0.1.mcaddon',
     'document.pdf',
     'data.csv'
 ];
