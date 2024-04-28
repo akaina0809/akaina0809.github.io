@@ -2,7 +2,7 @@ const owner = 'akaina0809'; // GitHubリポジトリの所有者名
 const repo = 'dsito'; // GitHubリポジトリの名前
 const fileNames = [
     '20230704_185437.jpg',
-    'example.zip',
+    'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
     'skin_v2.0.1.mcaddon',
     'document.pdf',
     'data.csv'
