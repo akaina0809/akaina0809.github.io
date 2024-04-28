@@ -26,6 +26,16 @@ count9 {
 	font-size: 40px;
 }
 
+@font-face {
+    font-family: 'HandwritingFont';
+    src: url('/Font/omakebold.ttf') format('truetype'); /* フォントファイルのパスを指定 */
+    /* 他のフォント形式に対応する場合は、ここに追加します */
+}
+
+body {
+    font-family: 'HandwritingFont', sans-serif; /* 全体のテキストに手書きフォントを適用 */
+}
+
 
 .float {
     animation: float 3s infinite ease-in-out; /* フロートアニメーションを3秒ごとに無限に繰り返し、イージングを適用 */
