@@ -41,19 +41,7 @@ function generateManifest(name, uuid, uuid2) {
   return JSON.stringify(manifest, null, 2);
 }
 
-
-
-function convert() {
-  let name = document.getElementById("name").value;
-  let honbun = document.getElementById("honbun").value;
-  let resultbox = document.getElementById("result");
-  let copybtn = document.getElementById("copy_btn");
-  let downloadbtn = document.getElementById("download_btn");
-  copybtn.value = "コピーする";
-
-  let uuid = generateUUID(); // UUID生成
-  let uuid2 = generateUUID(); // UUID2生成
-
+function generateScript(name, honbun) {
   let resultpanel = `//${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}\n\nimport { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
         if (ev.message.startsWith("!akaina0807")) {
           ev.cancel = true;
@@ -112,15 +100,27 @@ function convert() {
   }
   resultpanel = resultpanel + '\n}\n});';
 
-  // manifest.jsonファイルを生成
-  let manifestContent = generateManifest(name, uuid, uuid2);
+  return resultpanel;
+}
 
-  // zipファイルに追加
+function convert() {
+  let name = document.getElementById("name").value;
+  let honbun = document.getElementById("honbun").value;
+  let resultbox = document.getElementById("result");
+  let copybtn = document.getElementById("copy_btn");
+  let downloadbtn = document.getElementById("download_btn");
+  copybtn.value = "コピーする";
+
+  let uuid = generateUUID(); // UUID生成
+  let uuid2 = generateUUID(); // UUID2生成
+
+  let manifestContent = generateManifest(name, uuid, uuid2);
+  let scriptContent = generateScript(name, honbun);
+
   let zip = new JSZip();
-  zip.file("scripts/main.js", resultpanel);
+  zip.file("scripts/main.js", scriptContent);
   zip.file("manifest.json", manifestContent);
 
-  // zipファイルを生成してダウンロード
   zip.generateAsync({ type: "blob" })
     .then(function(blob) {
       let link = document.createElement('a');
@@ -129,8 +129,7 @@ function convert() {
       link.click();
     });
 
-  // 結果表示欄とボタンを更新
-  resultbox.value = resultpanel;
+  resultbox.value = scriptContent;
   downloadbtn.disabled = false;
   copybtn.disabled = false;
 }
@@ -145,3 +144,4 @@ function copy_to_clip() {
     alert("大変申し訳ありませんが、お使いのブラウザはクリップボードのコピーに対応しておりません。\nResult欄から手動でコピーしてください。");
   }
 }
+
