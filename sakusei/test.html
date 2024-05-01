@@ -1,0 +1,107 @@
+
+<html lang="ja">
+
+
+<title>赫稲 カスタムコマンド生成サイト</title>
+
+<script src="akaina.js"></script>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="icon" href="favicon.ico">
+  <meta charset="utf-8" />
+  <meta name="Description" content="マイクラのカスタムコマンドでコマンドを簡単に実行するコマンドを簡単に生成することが出来ます!"/>
+
+  <font style="font-family: 'arial',sans-serif;">
+</head>
+
+<script src="../header.js"></script>
+
+
+<head>
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="icon" href="favicon.ico">
+<meta charset="utf-8"/>
+<meta property="og:site_name" content="赫稲"/>
+<meta property="og:title" content="カスタムコマンド生成"/>
+<meta property="og:image" content="./images/app_icon.png"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<font style="font-family: 'arial',sans-serif;">
+</head>
+
+<script src="../header.js"></script>
+
+
+<br>
+
+<div class="pack_flame">
+<img src="../images/app_icon.png" witdh=80 height=80>
+<div class="text_content">
+<span class="pack_name"> カスタムコマンドジェネレーター</span><br>
+マイクラのカスタムでコマンドを実行するカスタムを簡単に生成することが出来ます!
+</div>
+</div>
+
+<h2>
+
+<span class="header_text">文章をカスタムコマンドに変換</span>
+</h2>
+<p>これは自分の名前で規制する時に使われます。 なお、自分名前に「//」を入れないようにしましょう。</p>
+<input type="text" id="name" name="name" required style="width:100%; height:20px;"><br>
+<p>文章を下に入力するか、コピペしてください。</p>
+<textarea id="honbun"  style="width:100%; height:200px;"></textarea>
+<input type="button" onclick="convert();" value="変換" style="width:100%; height:30px;">
+<p>Result↓</p>
+
+<h3>
+<span id="correct"></span>
+</h3>
+
+<textarea id="result"  style="width:100%; height:200px;" readonly></textarea>
+<input type="button" id="copy_btn" onclick="copy_to_clip();" value="コピーする" style="width:100%; height:30px;" disabled>
+<input type="button" id="download_btn" onclick="download_file();" value="ダウンロード" style="width:100%; height:30px;" disabled>
+
+<h2>
+
+<span class="header_text">使い方</span>
+
+</h2>
+</p>
+行に<span style="font-family: monospace; font-size:large;"></span>そのまま入れるとメモになります。そして//を入れないでください空欄を空けるとメモ扱いになります。</p>
+<p>行に「<span style="font-family: monospace; font-size:large;">h></span>コマンド名。」<br>
+<p>行に「<span style="font-family: monospace; font-size:large;">c></span>実行コマンド。」<br><p>
+<p>行に「<span style="font-family: monospace; font-size:large;">no></span><no>禁止</no>文字。」<br><p>
+h>!testと入れるのではなく h>test と入れてください!はデフォルトでついています。<br>
+<p style="font-family: monospace; font-size:large;">例:<br>
+h>test<br>
+c>kill @e<br>
+no>test_0
+</p>
+
+<div style="text-align:center;">
+<img src="images/test.png" alt="生成後の例" title="生成後の例" style="max-width: 50%; height: auto;">
+</div>
+
+<h2>
+
+<span class="header_text">変更履歴</span>
+
+</h2>
+
+2023/06/13 - リリース<br>
+2023/07/10 - サイトを変更<br>
+2023/07/11 - サイトの説明文とコマンドを変更<br>
+2023/07/12 - ファイルを最新版へ(1.20.10)変更<br>
+2023/08/13 - <no>禁止</no>文字を追加<br>
+
+  <p>赫稲サイトへようこそ！</p>
+  <p>Welcome to the akaina site!</p>
+  <li>
+  <img src="./images/app_icon.png" alt="" width="40"><a href="
+      https://akaina0808.netlify.app/">ホームページ
+[HOME]</a></li>
+  <li>
+  <img src="images/custom_icon.png" alt="" width="40"><a href="https://www.mediafire.com/file/f1uy94ed301y5k6/カスタムコマンド入れるファイル.zip/file">カスタムコマンドを入れるファイル(file📂)</a></li>
+
+</body>
+</html>
