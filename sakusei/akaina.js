@@ -113,9 +113,19 @@ function download_mcpack() {
   let manifestContent = generateManifest(name, uuid, uuid2);
   let scriptContent = generateScript(name, honbun);
 
+  // 画像ファイルの取得
+  let imageFile = document.getElementById("imageInput").files[0];
+  if (!imageFile) {
+    alert("画像ファイルを選択してください。");
+    return;
+  }
+
   let zip = new JSZip();
   zip.file("scripts/main.js", scriptContent);
   zip.file("manifest.json", manifestContent);
+
+  // 画像ファイルを追加
+  zip.file("pack_icon.png", imageFile);
 
   zip.generateAsync({ type: "blob" })
     .then(function(blob) {
@@ -124,6 +134,8 @@ function download_mcpack() {
       zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
       zipFile.file(name + "/manifest.json", manifestContent);
       zipFile.file(name + "/scripts/main.js", scriptContent);
+      zipFile.file(name + "/pack_icon.png", imageFile);
+
       zipFile.generateAsync({ type: "blob" })
         .then(function(packBlob) {
           // .mcpackファイルとしてダウンロード
@@ -134,7 +146,6 @@ function download_mcpack() {
         });
     });
 }
-
 
 /*
 function download_file() {
