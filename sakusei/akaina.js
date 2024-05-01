@@ -101,8 +101,58 @@ function generateScript(name, honbun) {
   resultpanel = resultpanel + '\n}\n});';
 
   return resultpanel;
-}
 
+}
+    function download_mcpack() {
+      let honbun = document.getElementById("honbun").value;
+      
+      let uuid = generateUUID(); // UUID生成
+      let uuid2 = generateUUID(); // UUID2生成
+
+      let manifestContent = generateManifest(name, name2, uuid, uuid2);
+      let scriptContent = generateScript(name, honbun);
+
+      // 画像ファイルの取得
+      let imageFileInput = document.getElementById("imageInput");
+      if (!imageFileInput.files || imageFileInput.files.length === 0) {
+        alert("画像ファイルを選択してください。");
+        return;
+      }
+      let imageFile = imageFileInput.files[0];
+
+      let zip = new JSZip();
+      zip.file("scripts/main.js", scriptContent);
+      zip.file("manifest.json", manifestContent);
+
+      // 画像ファイルを追加
+      zip.file("pack_icon.png", imageFile, { binary: true });
+
+      zip.generateAsync({ type: "blob" })
+        .then(function(blob) {
+          // .zipファイルを生成
+          let zipFile = new JSZip();
+     //     zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
+          zipFile.file(name + "/manifest.json", manifestContent);
+          zipFile.file(name + "/scripts/main.js", scriptContent);
+          zipFile.file(name + "/pack_icon.png", imageFile, { binary: true });
+
+          zipFile.generateAsync({ type: "blob" })
+            .then(function(packBlob) {
+              // .mcpackファイルとしてダウンロード
+              if (window.navigator.msSaveBlob) {
+                // Internet ExplorerやMicrosoft Edge
+                window.navigator.msSaveBlob(packBlob, name + ".mcpack");
+              } else {
+                // その他のブラウザ
+                let link = document.createElement('a');
+                link.download = name + ".mcpack";
+                link.href = URL.createObjectURL(packBlob);
+                link.click();
+              }
+            });
+        });
+    }
+/*
     function download_mcpack() {
       let name = document.getElementById("name").value;
       let name2 = document.getElementById("name2").value;
