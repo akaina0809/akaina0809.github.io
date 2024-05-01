@@ -1,6 +1,6 @@
 // generateUUID 関数の定義
 function generateUUID() {
-  return 'xxxxxxxx-xxxx-xxxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+  return 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0,
         v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
@@ -103,7 +103,7 @@ function generateScript(name, honbun) {
   return resultpanel;
 }
 
-function download_file() {
+function download_file(name) {
   let name = document.getElementById("name").value;
   let honbun = document.getElementById("honbun").value;
   
@@ -120,7 +120,7 @@ function download_file() {
   zip.generateAsync({ type: "blob" })
     .then(function(blob) {
       let link = document.createElement('a');
-      link.download = "my_plugin.zip";
+      link.download = "${name}.mcpack";
       link.href = URL.createObjectURL(blob);
       link.click();
     });
