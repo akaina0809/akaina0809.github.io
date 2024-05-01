@@ -7,13 +7,13 @@ function generateUUID() {
   });
 }
 
-function generateManifest(name, uuid) {
+function generateManifest(name, uuid, uuid2) {
   let manifest = {
     "format_version": 2,
     "header": {
       "description": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
       "name": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
-      "uuid": "b04ae331-58de-43d9-9731-c097549304d4",
+      "uuid": uuid,
       "version": [1, 0, 0],
       "min_engine_version": [1, 19, 60]
     },
@@ -22,7 +22,7 @@ function generateManifest(name, uuid) {
         "description": "",
         "type": "script",
         "language": "javascript",
-        "uuid": "726570d0-eb98-4dc4-8420-7fccc2120b47",
+        "uuid": uuid2,
         "version": [1, 0, 0],
         "entry": "scripts/main.js"
       }
@@ -52,6 +52,7 @@ function convert() {
   copybtn.value = "コピーする";
 
   let uuid = generateUUID(); // UUID生成
+  let uuid2 = generateUUID(); // UUID2生成
 
   let resultpanel = `//${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}\n\nimport { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
         if (ev.message.startsWith("!akaina0807")) {
@@ -112,7 +113,7 @@ function convert() {
   resultpanel = resultpanel + '\n}\n});';
 
   // manifest.jsonファイルを生成
-  let manifestContent = generateManifest(name, uuid);
+  let manifestContent = generateManifest(name, uuid, uuid2);
 
   // zipファイルに追加
   let zip = new JSZip();
