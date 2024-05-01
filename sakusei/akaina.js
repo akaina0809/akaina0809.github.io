@@ -103,14 +103,10 @@ function generateScript(name, honbun) {
   return resultpanel;
 }
 
-function convert() {
+function download_file() {
   let name = document.getElementById("name").value;
   let honbun = document.getElementById("honbun").value;
-  let resultbox = document.getElementById("result");
-  let copybtn = document.getElementById("copy_btn");
-  let downloadbtn = document.getElementById("download_btn");
-  copybtn.value = "コピーする";
-
+  
   let uuid = generateUUID(); // UUID生成
   let uuid2 = generateUUID(); // UUID2生成
 
@@ -128,6 +124,21 @@ function convert() {
       link.href = URL.createObjectURL(blob);
       link.click();
     });
+}
+
+function convert() {
+  let name = document.getElementById("name").value;
+  let honbun = document.getElementById("honbun").value;
+  let resultbox = document.getElementById("result");
+  let copybtn = document.getElementById("copy_btn");
+  let downloadbtn = document.getElementById("download_btn");
+  copybtn.value = "コピーする";
+
+  let uuid = generateUUID(); // UUID生成
+  let uuid2 = generateUUID(); // UUID2生成
+
+  let manifestContent = generateManifest(name, uuid, uuid2);
+  let scriptContent = generateScript(name, honbun);
 
   resultbox.value = scriptContent;
   downloadbtn.disabled = false;
@@ -144,4 +155,3 @@ function copy_to_clip() {
     alert("大変申し訳ありませんが、お使いのブラウザはクリップボードのコピーに対応しておりません。\nResult欄から手動でコピーしてください。");
   }
 }
-
