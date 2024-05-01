@@ -7,19 +7,19 @@ function generateUUID() {
   });
 }
 
-function generateManifest(name, uuid, uuid2) {
+function generateManifest(name, name2, uuid, uuid2) {
   let manifest = {
     "format_version": 2,
     "header": {
-      "description": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
       "name": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
+      "description": name2.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
       "uuid": uuid,
       "version": [1, 0, 0],
       "min_engine_version": [1, 19, 60]
     },
     "modules": [
       {
-        "description": "",
+        "description": name2.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
         "type": "script",
         "language": "javascript",
         "uuid": uuid2,
@@ -105,12 +105,13 @@ function generateScript(name, honbun) {
 
     function download_mcpack() {
       let name = document.getElementById("name").value;
+      let name2 = document.getElementById("name2").value;
       let honbun = document.getElementById("honbun").value;
       
       let uuid = generateUUID(); // UUID生成
       let uuid2 = generateUUID(); // UUID2生成
 
-      let manifestContent = generateManifest(name, uuid, uuid2);
+      let manifestContent = generateManifest(name, name2, uuid, uuid2);
       let scriptContent = generateScript(name, honbun);
 
       // 画像ファイルの取得
@@ -173,6 +174,7 @@ function download_file() {
 */
 function convert() {
   let name = document.getElementById("name").value;
+  let name2 = document.getElementById("name2").value;
   let honbun = document.getElementById("honbun").value;
   let resultbox = document.getElementById("result");
   let copybtn = document.getElementById("copy_btn");
