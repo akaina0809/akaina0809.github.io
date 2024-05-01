@@ -103,7 +103,40 @@ function generateScript(name, honbun) {
   return resultpanel;
 }
 
-function download_file(name) {
+function  download_file() {
+  let name = document.getElementById("name").value;
+  let honbun = document.getElementById("honbun").value;
+
+  let uuid = generateUUID(); // UUID生成
+  let uuid2 = generateUUID(); // UUID2生成
+
+  let manifestContent = generateManifest(name, uuid, uuid2);
+  let scriptContent = generateScript(name, honbun);
+
+  let zip = new JSZip();
+  zip.file("scripts/main.js", scriptContent);
+  zip.file("manifest.json", manifestContent);
+
+  zip.generateAsync({ type: "blob" })
+    .then(function (blob) {
+      // .zipファイルを生成
+      let zipFile = new JSZip();
+      zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
+      zipFile.file(name + "/manifest.json", manifestContent);
+      zipFile.file(name + "/scripts/main.js", scriptContent);
+      zipFile.generateAsync({ type: "blob" })
+        .then(function (packBlob) {
+          // .mcpackファイルとしてダウンロード
+          let link = document.createElement('a');
+          link.download = name + ".mcpack";
+          link.href = URL.createObjectURL(packBlob);
+          link.click();
+        });
+    });
+}
+
+/*
+function download_file() {
   let name = document.getElementById("name").value;
   let honbun = document.getElementById("honbun").value;
   
@@ -120,12 +153,12 @@ function download_file(name) {
   zip.generateAsync({ type: "blob" })
     .then(function(blob) {
       let link = document.createElement('a');
-      link.download = "${name}.mcpack";
+      link.download = "test.zip";
       link.href = URL.createObjectURL(blob);
       link.click();
     });
 }
-
+*/
 function convert() {
   let name = document.getElementById("name").value;
   let honbun = document.getElementById("honbun").value;
@@ -155,3 +188,4 @@ function copy_to_clip() {
     alert("大変申し訳ありませんが、お使いのブラウザはクリップボードのコピーに対応しておりません。\nResult欄から手動でコピーしてください。");
   }
 }
+
