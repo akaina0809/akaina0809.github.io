@@ -11,8 +11,8 @@ function generateManifest(name, uuid) {
   let manifest = {
     "format_version": 2,
     "header": {
-  //    "description": "${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}",
-  //   "name": "${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}",
+      "description": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
+      "name": name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t'),
       "uuid": "b04ae331-58de-43d9-9731-c097549304d4",
       "version": [1, 0, 0],
       "min_engine_version": [1, 19, 60]
