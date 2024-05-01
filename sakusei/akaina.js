@@ -132,7 +132,7 @@ function generateScript(name, honbun) {
         .then(function(blob) {
           // .zipファイルを生成
           let zipFile = new JSZip();
-          zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
+    //      zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
           zipFile.file(name + "/manifest.json", manifestContent);
           zipFile.file(name + "/scripts/main.js", scriptContent);
           zipFile.file(name + "/pack_icon.png", imageFile, { binary: true });
