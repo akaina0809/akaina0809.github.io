@@ -103,10 +103,10 @@ function generateScript(name, honbun) {
   return resultpanel;
 }
 
-function  download_file() {
+function download_mcpack() {
   let name = document.getElementById("name").value;
   let honbun = document.getElementById("honbun").value;
-
+  
   let uuid = generateUUID(); // UUID生成
   let uuid2 = generateUUID(); // UUID2生成
 
@@ -118,14 +118,14 @@ function  download_file() {
   zip.file("manifest.json", manifestContent);
 
   zip.generateAsync({ type: "blob" })
-    .then(function (blob) {
+    .then(function(blob) {
       // .zipファイルを生成
       let zipFile = new JSZip();
       zipFile.file("pack_manifest.json", JSON.stringify({ "format_version": 2, "header": { "description": name, "name": name, "uuid": uuid, "version": [1, 0, 0], "min_engine_version": [1, 19, 60] } }, null, 2));
       zipFile.file(name + "/manifest.json", manifestContent);
       zipFile.file(name + "/scripts/main.js", scriptContent);
       zipFile.generateAsync({ type: "blob" })
-        .then(function (packBlob) {
+        .then(function(packBlob) {
           // .mcpackファイルとしてダウンロード
           let link = document.createElement('a');
           link.download = name + ".mcpack";
@@ -134,6 +134,7 @@ function  download_file() {
         });
     });
 }
+
 
 /*
 function download_file() {
