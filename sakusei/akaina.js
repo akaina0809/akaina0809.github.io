@@ -133,3 +133,14 @@ function convert() {
   downloadbtn.disabled = false;
   copybtn.disabled = false;
 }
+
+function copy_to_clip() {
+  let resultbox = document.getElementById("result")
+  let copybtn = document.getElementById("copy_btn")
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(resultbox.value)
+    copybtn.value = "コピーしました!";
+  } else {
+    alert("大変申し訳ありませんが、お使いのブラウザはクリップボードのコピーに対応しておりません。\nResult欄から手動でコピーしてください。");
+  }
+}
