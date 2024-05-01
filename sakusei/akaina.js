@@ -1,3 +1,4 @@
+// generateUUID 関数の定義
 function generateUUID() {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0,
@@ -5,8 +6,6 @@ function generateUUID() {
     return v.toString(16);
   });
 }
-
-
 
 function generateManifest(name, uuid) {
   let manifest = {
@@ -35,7 +34,6 @@ function convert() {
           const player = ev.sender;
           player.runCommandAsync('tellraw @s {"rawtext":[{"text":"<server>これは赫稲が作成したサイトから作れます。アプデで使えなくなった場合はYouTubeまたはコロニーにて報告をお願いします。discord Twitter でも構いません。"}]}');
         `;
-
   if (name === '') {
     window.alert('個人名が空欄です。\n個人名には分かりやすい名前を入力してください。');
     return;
