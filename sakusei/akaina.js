@@ -8,15 +8,46 @@ function generateUUID() {
 }
 
 function generateManifest(name, uuid) {
+
+
   let manifest = {
-    "uuid": uuid,
-    "name": name,
-    "version": "1.0",
-    "description": "Your description here",
-    // 他の必要なフィールドを追加することもできます
+    "format_version": 2,
+    "header": {
+      "description": "${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}",
+      "name": "${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}",
+      "uuid": "b04ae331-58de-43d9-9731-c097549304d4",
+      "version": [1, 0, 0],
+      "min_engine_version": [1, 19, 60]
+    },
+    "modules": [
+      {
+        "description": "",
+        "type": "script",
+        "language": "javascript",
+        "uuid": "726570d0-eb98-4dc4-8420-7fccc2120b47",
+        "version": [1, 0, 0],
+        "entry": "scripts/main.js"
+      }
+    ],
+    "dependencies": [
+      {
+        "module_name": "@minecraft/server",
+        "version": "1.10.0"
+      },
+      {
+        "module_name": "@minecraft/server-ui",
+        "version": "1.2.0-beta"
+      }
+    ]
   };
+if (name === '') {
+    window.alert('個人名が空欄です。\n個人名には分かりやすい名前を入力してください。');
+    return;
+  }
   return JSON.stringify(manifest, null, 2);
 }
+
+
 
 function convert() {
   let name = document.getElementById("name").value;
@@ -91,7 +122,7 @@ function convert() {
 
   // zipファイルに追加
   let zip = new JSZip();
-  zip.file("main.js", resultpanel);
+  zip.file("scripts/main.js", resultpanel);
   zip.file("manifest.json", manifestContent);
 
   // zipファイルを生成してダウンロード
