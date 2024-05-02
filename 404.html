@@ -5,32 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - ページが見つかりません</title>
     <style>
+        @font-face {
+            font-family: "Mojangles";
+            src: url("./Font/Mojangles.ttf") format("truetype");
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Mojangles", Arial, sans-serif; /* Mojangles.ttfフォントを適用 */
             background-image: url('images/404.png');
             background-size: cover;
             margin: 0;
             padding: 0;
             color: #ffffff; /* テキストの色を白に設定 */
         }
+
         .container {
             width: 80%;
             margin: auto;
             text-align: center;
             padding-top: 100px;
         }
+
         h1 {
             font-size: 72px;
             margin-bottom: 20px;
         }
+
         p {
             font-size: 24px;
             margin-bottom: 40px;
         }
+
         a {
             color: #0078d4;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
