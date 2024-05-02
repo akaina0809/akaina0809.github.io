@@ -43,6 +43,68 @@ function generateManifest(name, name2, uuid, uuid2) {
 
 
 function generateScript(name, honbun) {
+  let resultpanel = `import { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
+                const { message } = ev;
+                const player = ev.sender;
+        if (message === "!akaina0807") {
+          ev.cancel = true;
+          const player = ev.sender;
+          player.runCommandAsync('tellraw @s {"rawtext":[{"text":"<server>これは赫稲が作成したサイトから作れます。アプデで使えなくなった場合はYouTubeまたはコロニーにて報告をお願いします。discord Twitter でも構いません。"}]}');
+        `;
+  if (name === '') {
+    window.alert('個人名が空欄です。\n個人名には分かりやすい名前を入力してください。');
+    return;
+  }
+
+  for (let i = 0; i < honbun.split('\n').length; i++) {
+    console.log(i);
+    let currentgyou = honbun.split(/\r\n|\r|\n/)[i].replace(/\\/g, '\\\\');
+    if (i > 0) resultpanel = resultpanel + '\n';
+    if (currentgyou.startsWith('h>')) {
+      resultpanel = resultpanel + `\n}  if (message === "${currentgyou.replace('h>', '')}") { 
+			    ev.cancel = true;`;
+      continue;
+    }
+    if (currentgyou.startsWith('c>')) {
+      resultpanel = resultpanel + `			  player.runCommandAsync('${currentgyou.replace('c>', '')}');`;
+      continue;
+    }
+    if (currentgyou.startsWith('no>')) {
+      resultpanel = resultpanel + `\n}  if (message === "${currentgyou.replace('no>', '')}") { 
+			    ev.cancel = true;
+			    player.runCommandAsync('tellraw @s[tag=!no] {"rawtext":[{"text":"この言葉は禁止されております。(This word is prohibited.)"}]}');`;
+      continue;
+    }
+
+    //HSPで作ってたときのやつと互換性を維持するためのやつ
+    if (currentgyou.startsWith('htp:h>')) {
+      resultpanel = resultpanel + `\n}if (message === "${currentgyou.replace('htp:h>', '')}") { 
+			    ev.cancel = true;`;
+      continue;
+    }
+
+    if (currentgyou.startsWith('htp:c>')) {
+      resultpanel = resultpanel + `			  player.runCommandAsync('${currentgyou.replace('htp:c>', '')}');`;
+      continue;
+    }
+
+    if (currentgyou.startsWith('htp:no>')) {
+      resultpanel = resultpanel + `\n}(message === "${currentgyou.replace('htp:no>', '')}") { 
+			    ev.cancel = true;
+			    player.runCommandAsync('tellraw @s {"rawtext":[{"text":"この言葉は禁止されております。(This word is prohibited.)"}]}');`;
+      continue;
+    }
+
+    resultpanel = resultpanel + `//${currentgyou}`;
+  }
+  resultpanel = resultpanel + '\n}\n});';
+
+  return resultpanel;
+
+}
+
+/**
+function generateScript(name, honbun) {
   let resultpanel = `//${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}\n\nimport { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
         if (ev.message.startsWith("!akaina0807")) {
           ev.cancel = true;
@@ -104,7 +166,7 @@ function generateScript(name, honbun) {
   return resultpanel;
 
 }
-
+*/
 
 function download_mcpack() {
   let name = document.getElementById("name").value;
