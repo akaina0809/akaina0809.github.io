@@ -8,6 +8,9 @@ function generateUUID() {
 }
 
 function generateManifest(name, name2, uuid, uuid2) {
+
+      let name = document.getElementById("name").value;
+      let name2 = document.getElementById("name2").value;
   let manifest = {
     "format_version": 2,
     "header": {
@@ -104,6 +107,9 @@ function generateScript(name, honbun) {
 
 }
     function download_mcpack() {
+
+      let name = document.getElementById("name").value;
+      let name2 = document.getElementById("name2").value
       let honbun = document.getElementById("honbun").value;
       
       let uuid = generateUUID(); // UUID生成
