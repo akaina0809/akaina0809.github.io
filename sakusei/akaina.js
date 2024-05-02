@@ -104,6 +104,8 @@ function generateScript(name, honbun) {
   return resultpanel;
 
 }
+
+
 function download_mcpack() {
   let name = document.getElementById("name").value;
   let name2 = document.getElementById("name2").value;
@@ -147,11 +149,34 @@ function download_mcpack() {
             // Internet ExplorerやMicrosoft Edge
             window.navigator.msSaveBlob(packBlob, name + ".mcpack");
           } else {
-            // その他のブラウザ
-            let link = document.createElement('a');
-            link.download = name + ".mcpack";
-            link.href = URL.createObjectURL(packBlob);
-            link.click();
+            // iOS および Android 用のダウンロード処理
+            if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+              // iOS の場合
+              const reader = new FileReader();
+              reader.onload = function() {
+                const link = document.createElement('a');
+                link.href = reader.result;
+                link.setAttribute('download', name + ".mcpack");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              };
+              reader.readAsDataURL(packBlob);
+            } else if (/Android/.test(navigator.userAgent)) {
+              // Android の場合
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(packBlob);
+              link.setAttribute('download', name + ".mcpack");
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            } else {
+              // その他のブラウザ
+              const link = document.createElement('a');
+              link.download = name + ".mcpack";
+              link.href = URL.createObjectURL(packBlob);
+              link.click();
+            }
           }
         });
     });
