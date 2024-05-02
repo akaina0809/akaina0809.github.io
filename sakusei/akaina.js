@@ -247,7 +247,7 @@ function download_mcpack() {
 // デフォルトの画像を取得する関数
 function getDefaultImage() {
   // デフォルトの画像のパスを指定してください
-  let defaultImagePath = "./pack_icon.png";
+  let defaultImagePath = "pack_icon.png";
   // ここではデフォルトの画像として空の画像ファイルを作成しています
   return new File([], defaultImagePath);
 }
