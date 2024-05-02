@@ -117,11 +117,13 @@ function download_mcpack() {
 
   // 画像ファイルの取得
   let imageFileInput = document.getElementById("imageInput");
+  let imageFile;
   if (!imageFileInput.files || imageFileInput.files.length === 0) {
-    alert("画像ファイルを選択してください。");
-    return;
+    // 画像が選択されていない場合、デフォルトの画像を設定する
+    imageFile = getDefaultImage();
+  } else {
+    imageFile = imageFileInput.files[0];
   }
-  let imageFile = imageFileInput.files[0];
 
   let zip = new JSZip();
   zip.file("scripts/main.js", scriptContent);
@@ -153,6 +155,14 @@ function download_mcpack() {
           }
         });
     });
+}
+
+// デフォルトの画像を取得する関数
+function getDefaultImage() {
+  // デフォルトの画像のパスを指定してください
+  let defaultImagePath = "./pack_icon.png";
+  // ここではデフォルトの画像として空の画像ファイルを作成しています
+  return new File([], defaultImagePath);
 }
 
 /*
