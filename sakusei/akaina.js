@@ -8,9 +8,6 @@ function generateUUID() {
 }
 
 function generateManifest(name, name2, uuid, uuid2) {
-
-      let name = document.getElementById("name").value;
-      let name2 = document.getElementById("name2").value;
   let manifest = {
     "format_version": 2,
     "header": {
@@ -43,6 +40,7 @@ function generateManifest(name, name2, uuid, uuid2) {
   };
   return JSON.stringify(manifest, null, 2);
 }
+
 
 function generateScript(name, honbun) {
   let resultpanel = `//${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}\n\nimport { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
