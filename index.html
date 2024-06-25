@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>言語選択</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>言語を選択してください</h1>
+  <select id="langSelect">
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+    <!-- 他の言語を追加する場合はここにオプションを追加 -->
+  </select>
+  <button onclick="設定を保存()">選択する</button>
+
+  <script>
+    function 設定を保存() {
+      // 選択された言語コードを取得
+      let 言語コード = document.getElementById("langSelect").value;
+
+      // クッキーまたはローカルストレージに選択された言語を保存する例
+      // ここではローカルストレージを使用する例を示します
+      localStorage.setItem('選択された言語', 言語コード);
+
+      // 選択された言語に基づいてリダイレクト
+      ページをリダイレクトする();
+    }
+
+    function ページをリダイレクトする() {
+      // 選択された言語を取得
+      let 言語コード = localStorage.getItem('選択された言語') || 'ja'; // デフォルトは日本語
+
+      // 選択された言語に応じたリダイレクト先URLを設定
+      let リダイレクト先URL = '';
+
+      switch (言語コード) {
+        case 'en':
+          リダイレクト先URL = 'https://example.com/en'; // 英語のページURL
+          break;
+        case 'ja':
+          リダイレクト先URL = 'https://example.com/ja'; // 日本語のページURL
+          break;
+        default:
+          リダイレクト先URL = 'https://akaina0809.github.io/'; // デフォルトは日本語
+      }
+
+      // リダイレクト
+      window.location.href = リダイレクト先URL;
+    }
+  </script>
+</body>
+</html>
