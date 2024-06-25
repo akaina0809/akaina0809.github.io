@@ -5,6 +5,9 @@ function convert() {
   let copybtn = document.getElementById("copy_btn")
   let downloadbtn = document.getElementById("download_btn")
   copybtn.value = "コピーする";
+  // 本文を行ごとに分割
+  let lines = honbun.split(/\r\n|\r|\n/);
+  let lineCount = lines.length; // 行数を取得
 
   let resultpanel = `//${name.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\t/g, '\\t')}\n\nimport { world, system } from "@minecraft/server";\nworld.beforeEvents.chatSend.subscribe(ev => {
         if (ev.message.startsWith("!akaina0807")) {
