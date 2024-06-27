@@ -3,6 +3,4 @@
 このサイトはオリジナルそしてある人のを参考に許可を取り参考にし作りました。
 このコードを盗むことは許しません。
 
-<p align="center">
-    <img width="1280" src"https://github.com/akaina0809/Test_2/blob/main/akina.png" alt="title">
-</p>
+<img width="1280" src"https://github.com/akaina0809/Test_2/blob/main/akina.png" alt="title">
