@@ -4,5 +4,5 @@
 このコードを盗むことは許しません。
 
 <p align="center">
-    <img width="1280" src"https://raw.githubusercontent.com/akaina0809/Test_2/main/akina.png" alt="title">
+    <img width="1280" src"./icon.png" alt="title">
 </p>
