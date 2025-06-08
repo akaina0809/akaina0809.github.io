@@ -282,7 +282,7 @@ li {
       pack_flame.classList.add("pack_flame")
       addon_list_div.appendChild(pack_flame)
       
-      pack_flame.innerHTML = `<img src="${obj.icon_url}" witdh=80 height=80><div class="text_content"><span class="pack_name"><a href="${obj.link}">${obj.name}</a></span><br>${obj.description}<br>${obj.type.includes("リソースパック") ? `<span class="risopa">リソースパック</span>` : ``}${obj.type.includes("ビヘイビアーパック") ? `<span class="bihepa">ビヘイビアーパック</span>` : ``}<br><div id="${obj.id}" class="release-info">２２</div></div>`
+      pack_flame.innerHTML = `<img src="${obj.icon_url}" witdh=80 height=80><div class="text_content"><span class="pack_name"><a href="${obj.link}">${obj.name}</a></span><br>${obj.description}<br>${obj.type.includes("リソースパック") ? `<span class="risopa">リソースパック</span>` : ``}${obj.type.includes("ビヘイビアーパック") ? `<span class="bihepa">ビヘイビアーパック</span>` : ``}<br><div id="${obj.id}" class="release-info"></div></div>`
     }
   }
   akaina()
