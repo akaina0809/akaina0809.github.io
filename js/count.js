@@ -1,5 +1,6 @@
 const owner = 'akaina0809'; // GitHubリポジトリの所有者名
 const repo = 'dsito';       // GitHubリポジトリの名前
+const githubToken = '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'; // ←ご自身のGitHubトークンに置き換えてください
 
 const fileNames = [
   'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
@@ -23,10 +24,14 @@ function fetchReleaseInfo() {
 }
 
 function fetchFileData(fileName) {
-  return fetch(`https://api.github.com/repos/${owner}/${repo}/releases`)
+  return fetch(https://api.github.com/repos/${owner}/${repo}/releases, {
+    headers: {
+      Authorization: token ${githubToken}
+    }
+  })
     .then(response => {
       if (!response.ok) {
-        throw new Error(`GitHub API response error: ${response.status}`);
+        throw new Error(GitHub API response error: ${response.status});
       }
       return response.json();
     })
@@ -52,22 +57,22 @@ function fetchFileData(fileName) {
 
 function displayReleaseInfo(fileDataArray) {
   fileDataArray.forEach((fileData, index) => {
-    const elementId = `release-info${index + 1}`;
+    const elementId = release-info${index + 1};
     const targetElement = document.getElementById(elementId);
 
     if (!targetElement) {
-      console.warn(`要素 '${elementId}' が見つかりませんでした。HTML に追加されているか確認してください。`);
+      console.warn(要素 '${elementId}' が見つかりませんでした。HTML に追加されているか確認してください。);
       return;
     }
 
-    const releaseInfoHTML = `
+    const releaseInfoHTML = 
       <div class="release-info">
         <div class="download-info">
           <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button>
           <a>: ${fileData.downloadCount}${set}</a>
         </div>
       </div>
-    `;
+    ;
 
     targetElement.innerHTML = releaseInfoHTML;
   });
