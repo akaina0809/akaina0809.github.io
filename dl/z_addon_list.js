@@ -7,7 +7,7 @@ let adlist = {
       junban: 1,
       icon_url: "https://akaina0809.github.io/addon/touhou/images/Used.jpg?raw=true",
       link: "https://akaina0809.github.io/addon/touhou/Komeiji_Koishi.html",
-      id: "release-info2"
+      id: "release-info1"
     },
     {
       name: "Skin change addon",
@@ -16,7 +16,7 @@ let adlist = {
       junban: 2,
       icon_url: "https://akaina0809.github.io/addon/skin/english/png_1.png?raw=true",
       link: "https://akaina0809.github.io/addon/skin/skin.html",
-      id: "release-info3"
+      id: "release-info2"
     },
     {
       name: "クリスマス:Christmas site",
