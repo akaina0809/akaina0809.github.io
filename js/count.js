@@ -19,7 +19,7 @@ function fetchReleaseInfo() {
   Promise.all(fileNames.map(fetchFileData))
     .then(displayReleaseInfo)
     .catch(error => {
-      console.error('Error fetching file info:', error);
+     // console.error('Error fetching file info:', error);
     });
 }
 
@@ -31,7 +31,7 @@ function fetchFileData(fileName) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error(GitHub API response error: ${response.status});
+       // throw new Error(GitHub API response error: ${response.status});
       }
       return response.json();
     })
