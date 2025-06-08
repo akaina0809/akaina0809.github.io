@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>ダウンロード Download</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="ダウンロードサイトです。ここでは私が作成した配布物をダウンロード出来ます。">
+<meta name="keywords" content="Download, 赫稲">
+<script src="js/count.js"></script>
+<link rel="stylesheet" href="../css/style_2.css">
+<link rel="stylesheet" type="text/css" href="../css/animation_0.css"> 
+<script src="../js/animation_0.js"></script>
+<style>
+.release-info {
+    text-align: center;
+}
+
+.download-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.download-button {
+    margin-left: 10px;
+}
+
+.release-info p {
+    margin: 0; /* ボタンの下の余白を削除 */
+}
+
+    </style>
+    <style>
+	    
+  section {
+    margin-top: 15px;
+    margin-bottom: -15px; /* 下側の余白を20pxに設定 */
+}
+
+
+        footer {
+	clear: both;
+	text-align: center;	/*文字をセンタリング*/
+	padding: 20px 0px;		/*headerの高さ*/
+	background: #7117c4;		/*左から、上下、左右への余白*/
+}
+footer a {
+    background: #7117c4;		
+	text-decoration: none;
+	border: none;
+}
+footer .pr {
+    background: #7117c4;		
+	display: block;
+}
+        @font-face {
+    font-family: 'HandwritingFont';
+    src: url('./Font/omakebold.ttf') format('truetype'); /* フォントファイルのパスを指定 */
+    /* 他のフォント形式に対応する場合は、ここに追加します */
+}
+
+* {
+    font-weight: bold;
+    font-family: 'HandwritingFont', sans-serif; /* 全体のテキストに手書きフォントを適用 */
+}
+
+  .container {
+    text-align: center; /* テキストを中央に配置 */
+  }
+
+  .text {
+    display: inline-block; /* テキストの幅に合わせてブロック化 */
+    animation: bounce 0.5s alternate infinite ease-in-out; /* アニメーションを適用 */
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+  }
+  blockok{background: #000000;	color: #ffffff;	/*全体の文字色*/}
+  .blockok{background: #000000;	color: #ffffff;	/*全体の文字色*/}
+  </style>
+<style>
+/* フェードインアニメーション */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* フェードインアニメーションを適用 */
+.fadeIn li {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* スタイリング */
+ul {
+    
+    text-align: center; /* テキストを中央に配置 */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    text-align: center; /* テキストを中央に配置 */
+    margin-bottom: 10px;
+  //  background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
+</head>
+<script type="text/javascript" src="./z_addon_list.js"></script>
+<script src=../"js/count.js"></script>
+<body>
+  <div class="main">
+    <body>
+  <header>
+    <h1>🎮 Minecraft アドオン紹介</h1>
+  </header>
+    <div class="maincontent">
+      <h2>マイクラ統合版アドオン</h2>
+      マイクラ統合版で使えるいろんなアドオンを配布しています。<br>
+　<a href="https://akaina0809.github.io/">HOME</a>　　　<a href="https://akaina0809.github.io/Link.html">LINK</a><br>
+
+      <p style="text-align: right;">
+        並べ替え: 
+        <select id="narabekae" onchange="yomikomi()">
+          <option id="aiueo">あいうえお順</option>
+          <option id="atarasii">新しい順</option>
+          <option id="hurui">古い順</option>
+        </select>
+        　絞り込む: 
+        <select id="siborikomi" onchange="yomikomi()">
+          <option id="defalut">全部</option>
+          <option id="リソースパック">リソースパック</option>
+          <option id="ビヘイビアーパック">ビヘイビアーパック</option>
+        </select>
+      </p>
+      <div id="addon_list_div"></div>
+      <hr>
+  </div>
+  <div style="height: 35px;"></div>
+</body>
+
+<style>
+  select {
+    font-size: large;
+  }
+  .risopa {
+    background-color: #ffc26d;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 2px;
+  }
+  .bihepa {
+    background-color: #9bdd54;
+    border-radius: 4px;
+    padding: 2px;
+    margin: 2px;
+  }
+body {
+  font-family: Meiryo, Arial, Helvetica, sans-serif;
+  width: 1200px;
+  max-width: 100%;
+  margin: auto;
+  font-size: 17px;
+  background-color: #f2ffcf;
+  background-image: linear-gradient(#f3fca3 50%, transparent 50%);
+  background-size: 10px 10px;
+}
+
+    header, footer {
+      text-align: center;
+      padding: 1rem;
+      background: #444;
+      color: white;
+    }
+div.main {
+  background-color: #ffffff;
+  border-left: double 5px #4ec4d3;
+  border-bottom: double 5px #4ec4d3;
+  border-right: double 5px #4ec4d3;
+}
+
+div.maincontent {
+  padding: 10px;
+}
+
+div.path {
+  margin-bottom: 5px;
+}
+
+
+div.pack_flame {
+  background-color: #ebebeb;
+  padding: 10px;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+div.text_content {
+  padding-left: 10px;
+}
+
+span.pack_name {
+  font-size: 130%;
+}
+
+a {
+  color: #0000ee;
+}
+
+a.anda-kesu {
+  text-decoration: none;
+}
+
+div.indexlink {
+  width: calc(100% - 5px);
+  padding: 6px 0 6px 6px;
+  margin-bottom: 5px;
+  border: 2px solid #005713;
+  background-color: #e0ffea;
+  color: black;
+  transition: 0.3s;
+}
+
+div.indexlink:hover {
+  border: 2px solid #005713;
+  background-color: #bddfc8;
+  color: black;
+}
+
+h2 {
+  background: #f4f4f4;
+  border-left: solid 6px #5bb7ae;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
+  padding: 7px;
+  font-weight: bold;
+}
+
+h3 {
+  background-color: #f4f4f4 ;
+  border-bottom: 3px dotted #5bb7ae;
+  border-left: 3px dotted #5bb7ae;
+  padding: 4px;
+  padding-left: 6px;
+  text-align: left;
+}
+
+
+::selection {
+  background-color: #a8d0f799;
+  color:black;
+}
+</style>
+
+
+<script type="text/javascript">
+
+  function akaina() {
+    while (addon_list_div.firstChild) {
+      addon_list_div.removeChild(addon_list_div.firstChild)
+    }
+    let adoonn = adlist.addon_list
+    switch (document.getElementById("narabekae").selectedOptions[0].id) {
+      case "aiueo" : adoonn.sort((a, b) => a.name.localeCompare(b.name)); break
+      case "atarasii" : adoonn.sort((a, b) => b.junban - a.junban); break
+      case "hurui" : adoonn.sort((a, b) => a.junban - b.junban); break
+    }
+    for (const obj of adoonn) {
+      let siborikomi = document.getElementById("siborikomi").selectedOptions[0].id
+      if (!(siborikomi === "defalut")) if (!obj.type.includes(siborikomi)) continue
+
+
+      let addon_list_div = document.getElementById('addon_list_div')
+      let pack_flame = document.createElement('div')
+      pack_flame.classList.add("pack_flame")
+      addon_list_div.appendChild(pack_flame)
+      
+      pack_flame.innerHTML = `<img src="${obj.icon_url}" witdh=80 height=80><div class="text_content"><span class="pack_name"><a href="${obj.link}">${obj.name}</a></span><br>${obj.description}<br>${obj.type.includes("リソースパック") ? `<span class="risopa">リソースパック</span>` : ``}${obj.type.includes("ビヘイビアーパック") ? `<span class="bihepa">ビヘイビアーパック</span>` : ``}<br><div id="${obj.id}" class="release-info">２２</div></div>`
+    }
+  }
+  akaina()
+</script>
+</body>
+<!--/container-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<!--自作のJS-->
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+</html>
