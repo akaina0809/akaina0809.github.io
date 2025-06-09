@@ -1,57 +1,45 @@
-const owner = 'akaina0809'; // GitHubリポジトリの所有者名
-const repo = 'dsito';       // GitHubリポジトリの名前
-const githubToken = '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'; // 実際は絶対に公開しないでください！
+const owner = "akaina0809";
+const repo = "dsito";
 
+// 表示対象のファイル名一覧（この順に表示される）
 const fileNames = [
   'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
   'skin_v2.0.1.mcaddon'
 ];
 
-const set = ' DL'; // 表示する接尾語
+const set = ' DL'; // 表示用テキスト
+const apiUrl = `https://akaina0809.akainaqiaotian.workers.dev?owner=${owner}&repo=${repo}`;
 
-// ページ読み込み完了後に実行
 document.addEventListener("DOMContentLoaded", () => {
-  fetchReleaseInfo(); // 初回取得
-  setInterval(fetchReleaseInfo, 30000); // 30秒ごとに更新
+  fetchReleaseInfo();
+  setInterval(fetchReleaseInfo, 30000);
 });
 
 function fetchReleaseInfo() {
-  Promise.all(fileNames.map(fetchFileData))
-    .then(displayReleaseInfo)
-    .catch(error => {
-      console.error('Error fetching file info:', error);
-    });
-}
-
-function fetchFileData(fileName) {
-  return fetch(`https://api.github.com/repos/${owner}/${repo}/releases`, {
-    headers: {
-      Authorization: `token ${githubToken}`
-    }
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`GitHub API response error: ${response.status}`);
-      }
-      return response.json();
-    })
+  fetch(apiUrl)
+    .then(response => response.json())
     .then(data => {
-      let downloadCount = 0;
-      let downloadUrl = '';
-      data.forEach(release => {
-        release.assets.forEach(asset => {
-          if (asset.name === fileName) {
-            downloadCount += asset.download_count;
-            downloadUrl = asset.browser_download_url;
-          }
-        });
+      const releases = Array.isArray(data) ? data : [];
+      const flatAssets = releases.flatMap(release => release.assets);
+
+      // fileNames の順に表示を揃える
+      const filteredData = fileNames.map(name => {
+        const asset = flatAssets.find(a => a.name === name);
+        return {
+          fileName: name,
+          downloadCount: asset ? asset.download_count : 0,
+          downloadUrl: asset ? asset.browser_download_url : ''
+        };
       });
 
-      return {
-        fileName,
-        downloadCount,
-        downloadUrl
-      };
+      displayReleaseInfo(filteredData);
+    })
+    .catch(error => {
+      console.error("エラー:", error);
+      fileNames.forEach((_, index) => {
+        const el = document.getElementById(`release-info${index + 1}`);
+        if (el) el.innerHTML = `<div class="download-info">取得失敗</div>`;
+      });
     });
 }
 
@@ -61,7 +49,7 @@ function displayReleaseInfo(fileDataArray) {
     const targetElement = document.getElementById(elementId);
 
     if (!targetElement) {
-      console.warn(`要素 '${elementId}' が見つかりませんでした。HTML に追加されているか確認してください。`);
+      console.warn(`要素 '${elementId}' が見つかりませんでした。`);
       return;
     }
 
@@ -85,80 +73,3 @@ function downloadAsset(url) {
     alert('ダウンロードリンクが取得できませんでした。');
   }
 }
-
-
-
-/*const owner = 'akaina0809'; // GitHubリポジトリの所有者名
-const repo = 'dsito'; // GitHubリポジトリの名前
-const fileNames = [
-    'Touhou.LittleMADE.addon.V.1.mcaddon',
-    'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
-    'skin_v2.0.1.mcaddon',
-    'document.pdf',
-    'data.csv'
-];
-
-const set = ' DL'; // 名前
-
-
-
-function fetchReleaseInfo() {
-    Promise.all(fileNames.map(fileName => fetchFileData(fileName)))
-        .then(fileDataArray => {
-            displayReleaseInfo(fileDataArray);
-        })
-        .catch(error => {
-            console.error('Error fetching file info:', error);
-        });
-}
-
-function fetchFileData(fileName) {
-    return new Promise((resolve, reject) => {
-        fetch(`https://api.github.com/repos/${owner}/${repo}/releases`)
-            .then(response => response.json())
-            .then(data => {
-                let downloadCount = 0;
-                let downloadUrl = '';
-                data.forEach(release => {
-                    release.assets.forEach(asset => {
-                        if (asset.name === fileName) {
-                            downloadCount += asset.download_count;
-                            downloadUrl = asset.browser_download_url;
-                        }
-                    });
-                });
-                const fileData = {
-                    fileName: fileName,
-                    downloadCount: downloadCount,
-                    downloadUrl: downloadUrl
-                };
-                resolve(fileData);
-            })
-            .catch(error => {
-                reject(error);
-            });
-    });
-}
-
-function displayReleaseInfo(fileDataArray) {
-    fileDataArray.forEach((fileData, index) => {
-        const releaseInfoHTML = `
-            <div class="release-info">
-                <div class="download-info">
-                    <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button><a>: ${fileData.downloadCount}${set}</a>
-                </div>
-            </div>`;
-        document.getElementById(`release-info${index + 1}`).innerHTML = releaseInfoHTML;
-    });
-}
-
-function downloadAsset(url) {
-    window.open(url, '_blank');
-}
-
-// 初期読み込み時にリリース情報を取得
-fetchReleaseInfo();
-
-// 30秒ごとにリリース情報を更新
-setInterval(fetchReleaseInfo, 30000); // 30秒ごとに更新
-*/
