@@ -1,6 +1,6 @@
 const owner = 'akaina0809'; // GitHubリポジトリの所有者名
 const repo = 'dsito';       // GitHubリポジトリの名前
-const githubToken = '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'; // 実際は絶対に公開しないでください！
+const githubToken = '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'; // 実際は絶対に公開しないでください！
 
 const fileNames = [
   'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
