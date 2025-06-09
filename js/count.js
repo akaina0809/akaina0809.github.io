@@ -53,7 +53,7 @@ function displayReleaseInfo(fileDataArray) {
       return;
     }
 
-    const releaseInfoHTML = `
+    const releaseInfoHTML = `<br>
       <div class="release-info">
         <div class="download-info">
           <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button>
