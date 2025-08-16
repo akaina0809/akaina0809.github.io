@@ -90,9 +90,13 @@
   /* ===== 検索欄 ===== */
   .search-container {
     display: flex;
-    align-items: center;
-    gap: -1px; /* 検索欄とGIFの間の余白 */
-    margin: 20px 0;
+    flex-direction: column; /* 縦並び */
+    align-items: stretch;   /* 幅いっぱい */
+  }
+
+  .gif-icon {
+    align-self: flex-end; /* 右寄せ */
+    margin-bottom: 5px;   /* 検索欄との間に余白 */
   }
 
   #search {
@@ -102,13 +106,6 @@
     border-radius: 4px;
     font-family: 'Pacifico', cursive;
     box-sizing: border-box;
-  }
-
-  .gif-icon {
-    position: static;  /* 絶対配置を解除 */
-    width: 40px;
-    height: auto;
-    cursor: pointer;
   }
 
   /* ===== テーブル（カード風変換） ===== */
