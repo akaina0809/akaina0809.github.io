@@ -84,6 +84,22 @@
          75%  { transform: translate(-10px, -10px); } /* 左上 */
         100% { transform: translate(0, 0); }       /* 元の位置 */
     }
+    .home-btn {
+  position: fixed;
+  bottom: 20px;   /* 画面下から20px */
+  right: 20px;    /* 画面右から20px */
+  z-index: 1000;  /* 最前面に表示 */
+}
+
+.home-btn img {
+  width: 50px;     /* アイコンのサイズ */
+  height: 50px;
+  border-radius: 50%; /* 丸くする（任意） */
+  background: #fff;   /* 背景白 */
+  padding: 10px;      /* 余白をつけて押しやすく */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* 影で浮かせる */
+  cursor: pointer;
+}
     /* スマホ用レイアウト */
 @media (max-width: 600px) {
 
@@ -149,6 +165,9 @@ td {
 
 </head>
 <body>
+<a href="./index.html" class="home-btn">
+  <img src="https://i.pinimg.com/originals/84/53/6e/84536ea88ad82992afb6e879bd7616c2.gif" alt="ホームに戻る" />
+</a>
 
 <h1>Molang Query Functions</h1>
 <p class="search-container">日付: 2025年8月13日</p>
