@@ -8,7 +8,8 @@
 
   <!-- iOS / iPhone ホーム画面用 -->
   <link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/131579504?v=2">
-   <meta name="viewport" content="width=1024, initial-scale=1">
+   <!--meta name="viewport" content="width=1024, initial-scale=1"-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
       @font-face {
       font-family: 'KTEGAKI';
@@ -19,8 +20,6 @@
           line-height: 1.6;
           margin: 20px;
           background-color: #f0f8ff; /* 明るい背景色 */
-          max-width: 1024px; /* PCと同じ幅 */
-          margin: 0 auto;     /* 中央寄せ */
       }
       h1 {
           font-family: 'KTEGAKI', cursive;
@@ -85,6 +84,67 @@
          75%  { transform: translate(-10px, -10px); } /* 左上 */
         100% { transform: translate(0, 0); }       /* 元の位置 */
     }
+    /* スマホ用レイアウト */
+@media (max-width: 600px) {
+
+  /* ===== 検索欄 ===== */
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* 検索欄とGIFの間の余白 */
+    margin: 20px 0;
+  }
+
+  #search {
+    flex: 1; /* 残り幅を全部使う */
+    padding: 10px;
+    border: 2px solid #ff69b4;
+    border-radius: 4px;
+    font-family: 'Pacifico', cursive;
+    box-sizing: border-box;
+  }
+
+  .gif-icon {
+    position: static;  /* 絶対配置を解除 */
+    width: 40px;
+    height: auto;
+    cursor: pointer;
+  }
+
+  /* ===== テーブル（カード風変換） ===== */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none; /* 見出しを非表示 */
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    word-break: break-word; /* 長文でも折り返す */
+  }
+
+  td::before {
+    content: attr(data-label); /* <td data-label="関数名"> のラベルを表示 */
+    font-weight: bold;
+    margin-right: 10px;
+    color: #555;
+    flex-shrink: 0;
+  }
+}
+
   </style>
 
 </head>
