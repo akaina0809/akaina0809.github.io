@@ -91,7 +91,7 @@
   .search-container {
     display: flex;
     align-items: center;
-    gap: 8px; /* 検索欄とGIFの間の余白 */
+    gap: -1px; /* 検索欄とGIFの間の余白 */
     margin: 20px 0;
   }
 
@@ -129,12 +129,15 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   }
 
-  td {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
-    word-break: break-word; /* 長文でも折り返す */
-  }
+td {
+  display: flex;
+  justify-content: flex-start; /* 左寄せに変更 */
+  align-items: flex-start;      /* 上揃え（複数行のときズレないように） */
+  padding: 5px 10px;
+  word-break: break-word;       /* 長文でも折り返す */
+  gap: 8px;                     /* ラベルと内容の間に余白をつける */
+}
+
 
   td::before {
     content: attr(data-label); /* <td data-label="関数名"> のラベルを表示 */
