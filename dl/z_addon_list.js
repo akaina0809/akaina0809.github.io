@@ -32,7 +32,7 @@ let adlist = {
       description: "確率ドロッアドオン",
       type: ["ビヘイビアーパック"],
       junban: 3,
-      icon_url: "../addon/Probability_Drop/pack_icon.png",
+      icon_url: "https://akaina0809.github.io/addon/Probability_Drop/pack_icon.png?raw=true",
       link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
       id: "release-info3"
     },
