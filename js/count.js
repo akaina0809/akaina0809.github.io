@@ -4,7 +4,9 @@ const repo = "dsito";
 // 表示対象のファイル名一覧（この順に表示される）
 const fileNames = [
   'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
-  'skin_v2.0.1.mcaddon'
+  'skin_v2.0.1.mcaddon',
+  'Probability.Drop.Addon.mcaddon'
+
 ];
 
 const set = ' DL'; // 表示用テキスト
