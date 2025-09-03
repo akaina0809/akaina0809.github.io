@@ -27,5 +27,14 @@ let adlist = {
       link: "https://akaina0809.github.io/addon/scoop/pack.html",
       id: ""
     },
+    {
+      name: "Probability Drop. Addon",
+      description: "確率ドロッアドオン",
+      type: ["ビヘイビアーパック"],
+      junban: 3,
+      icon_url: "",
+      link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
+      id: "release-info3"
+    },
   ]
 }
