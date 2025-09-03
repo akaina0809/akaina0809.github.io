@@ -7,7 +7,7 @@ body {
 	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	text-align: center;
 	-webkit-text-size-adjust: 100%;
-	background-image: url(images/background.png); /* 背景画像 */
+	background-image: url(https://github.com/akaina0809/akaina0809.github.io/blob/main/addon/skin/images/background.png); /* 背景画像 */
 	color: #000000; /* 文字色 */
 }
 img {
@@ -337,4 +337,5 @@ footer a:visited {
 	padding: 10px;
 	display: block;
 }
+
 }
