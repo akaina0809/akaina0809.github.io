@@ -36,5 +36,6 @@ let adlist = {
       link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
       id: "release-info3"
     },
+    
   ]
 }
