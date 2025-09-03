@@ -5,7 +5,7 @@ const repo = "dsito";
 const fileNames = [
   'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
   'skin_v2.0.1.mcaddon',
-  'Probability.Drop.Addon.mcaddon'
+  'Probability_Drop_Addon.mcaddon'
 
 ];
 
