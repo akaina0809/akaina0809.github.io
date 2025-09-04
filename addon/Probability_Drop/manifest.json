@@ -1,0 +1,19 @@
+{
+  "name": "Probability Drop Addon",
+  "short_name": "DropAddon",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/addon/Probability_Drop/pack_icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/addon/Probability_Drop/pack_icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
