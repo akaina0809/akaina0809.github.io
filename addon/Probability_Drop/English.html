@@ -2,110 +2,106 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Probability Drop Addon (English)</title>
 <meta name="description" content="Introduction site of Probability Drop Addon">
-<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/style.css">
-<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/css/color.css">
-<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/css/kotei.css">
-<!---link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"--->
+<meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
 
-<script src="https://akaina0809.github.io/addon/skin/js/script_2.js"></script>
-<script src="https://akaina0809.github.io/addon/skin/js/script.js"></script>
-<script src="https://akaina0809.github.io/addon/skin/js/script3.js"></script>
+<!-- favicon / アイコン統一 -->
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/addon/Probability_Drop/pack_icon.png">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/addon/Probability_Drop/pack_icon.png">
+<link rel="manifest" href="https://akaina0809.github.io/addon/Probability_Drop/manifest.json">
+<meta name="theme-color" content="#ffffff">
 
-</head>
+<!-- CSSまとめ -->
+<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/style.css">
+<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/css/color.css">
+<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/css/kotei.css">
+
 <style>
 @font-face {
   font-family: "UzuraFont";
-  src: url("https://akaina0112.github.io/kozinn/fonts/uzura.ttf") format("truetype");
+  src: url("https://akaina0112.github.io/kozinn/fonts/uzura.woff2") format("woff2");
   font-display: swap;
 }
-
-* {
-  font-family: "UzuraFont", cursive;
-}
+* { font-family: "UzuraFont", cursive; }
 </style>
+
+<!-- deferで非同期読み込み -->
+<script src="https://akaina0809.github.io/addon/skin/js/script_2.js" defer></script>
+<script src="https://akaina0809.github.io/addon/skin/js/script.js" defer></script>
+<script src="https://akaina0809.github.io/addon/skin/js/script3.js" defer></script>
+</head>
 
 <body onselectstart="return false;" onmousedown="return false;">
 
-<div id="menu_button"><span id="menu_button_line"></span></div>
-<div id="overlay"></div>
-
 <header>
-<div id="header_block">
-<div id="site_title"><a href="https://akaina0809.github.io/dl/Download.html">Addon (English)</a></div>
-<div id="main_menu">
-<nav>
-<ul>
- <li><a href="https://akaina0809.github.io/dl/Download.html">Home</a></li>
- <li><a href="./index.html">日本語</a></li>
-</ul>
-</nav>
-</div>
-</div>
+  <div id="header_block">
+    <div id="site_title">
+      <a href="https://akaina0809.github.io/dl/Download.html">Addon (English)</a>
+    </div>
+    <nav id="main_menu">
+      <ul>
+        <li><a href="https://akaina0809.github.io/dl/Download.html">Home</a></li>
+        <li><a href="./index.html">日本語</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
-<d><a href="https://github.com/akaina0809/akaina0809.github.io/releases/tag/drop"><button class="button-062">Download</button></a> </d>
+<main>
+  <a href="https://github.com/akaina0809/akaina0809.github.io/releases/tag/drop">
+    <button class="button-062">Download</button>
+  </a>
 
-<article>
+  <article>
+    <section class="block">
+      <div class="content">
+        <h1>What is the Probability Drop Addon?</h1>
+        <p>An addon that recreates the "5% Drop" project from Nichijou-gumi.</p>
+        <p>Supported languages:</p>
+        <table class="table_design1">
+          <tbody>
+            <tr><th>ja_JP</th><td>日本語 (日本)</td></tr>
+            <tr><th>en_US</th><td>English (United States)</td></tr>
+            <tr><th>ko_KR</th><td>한국어 (대한민국)</td></tr>
+          </tbody>
+        </table>
+        <p>Note: this is not a complete recreation.</p>
+        <p>This site is in English.</p>
+        <p>This addon uses <code>@minecraft/server</code> and <code>@minecraft/server-ui</code> with a stable script implementation.</p>
+        <p>It is less likely to break due to Minecraft updates.</p>
+        <p>If you find bugs or the addon no longer works, please contact me via
+          <a href="https://x.com/akaina0809?t=SYQ-_p6uOx_PlWZa1t7Xog&s=09">X</a> or
+          <a href="https://discord.gg/EhKSAMt8fM">Discord</a>.
+        </p>
+      </div>
+    </section>
 
-<div class="block">
-<div class="content">
-<h1>What is the Probability Drop Addon?</h1>
-<p>An addon that recreates the "5% Drop" project from Nichijou-gumi.</p>
-<p>The following languages are supported:</p>
-<p>
-<div class="table_design1">
-<table>
-<tbody>
- <tr>
-  <th>ja_JP</th>
-  <td>日本語 (日本)</td>
- </tr>
- <tr>
-  <th>en_US</th>
-  <td>English (United States)</td>
- </tr>
- <tr>
-  <th>ko_KR</th>
-  <td>한국어 (대한민국))</td>
- </tr>
-</tbody>
-</table>
-</div>
-</p>
-<p>Please note that this is not a complete recreation....</p>
-<p>This site is in English.</p>
-<p>This addon uses <code>@minecraft/server</code> and <code>@minecraft/server-ui</code> with a stable script implementation.</p>
-<p>Therefore, it is less likely to break due to Minecraft updates.</p>
-<p>If you find bugs or if the addon no longer works, please contact me via <a href="https://x.com/akaina0809?t=SYQ-_p6uOx_PlWZa1t7Xog&s=09"><color_ao_0>X (formerly Twitter)</color_ao_0></a> or <a href="https://discord.gg/EhKSAMt8fM"><color_ao>Discord</color_ao></a>.</p>
-</div>
-</div>
+    <section class="block">
+      <div class="content">
+        <video width="100%" height="100%" src="https://akaina0809.github.io/addon/skin/images/addon.mp4"
+          autoplay muted loop playsinline preload="none"></video>
+      </div>
+    </section>
 
-<div class="block">
-<div class="content">
-<video width="100%" height="100%" src="https://akaina0809.github.io/addon/skin/images/addon.mp4" autoplay muted loop></video>
-</div>
-</div>
-
-<div class="block">
-<div class="content">
-<h1>Features</h1>
-
-<p>1. Items (blocks only) drop with a 5% probability</p> 
-<p>2. Adds custom blocks and items (original content)</p> 
-<p>3. Uses the Script API (for Bedrock Edition, not Java Edition)</p> 
-<p>4. Players with the "op" tag can configure the addon</p> 
-<p>5. Settings are saved in the world and are shared across players</p> 
-
-</div>
-</div>
-
-</article>
+    <section class="block">
+      <div class="content">
+        <h1>Features</h1>
+        <ul>
+          <li>5% chance for items to drop (blocks only)</li>
+          <li>Custom blocks and items added (original content)</li>
+          <li>Uses Script API (Bedrock Edition, not Java Edition)</li>
+          <li>Players with "op" tag can configure the addon</li>
+          <li>Settings are saved in world and shared</li>
+        </ul>
+      </div>
+    </section>
+  </article>
+</main>
 
 <footer>
-<p>Probability Drop Addon (English version)</p> 
+  <p>Probability Drop Addon (English version)</p>
 </footer>
 </body>
 </html>
