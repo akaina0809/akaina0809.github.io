@@ -2,9 +2,18 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width">
 <title>Probability Drop Addon(日本語)</title>
 <meta name="description" content="Probability Drop Addonの紹介サイト">
+<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/style.css">
+<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/css/color.css">
+<link rel="stylesheet" type="text/css" href="https://akaina0809.github.io/addon/skin/css/kotei.css">
+<!---link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"--->
+
+<script src="https://akaina0809.github.io/addon/skin/js/script_2.js"></script>
+<script src="https://akaina0809.github.io/addon/skin/js/script.js"></script>
+<script src="https://akaina0809.github.io/addon/skin/js/script3.js"></script>
+  
 <meta http-equiv="Cache-Control" content="max-age=31536000, immutable">
 
 <!-- favicon / アイコン統一 -->
@@ -12,11 +21,6 @@
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/addon/Probability_Drop/pack_icon.png">
 <link rel="manifest" href="https://akaina0809.github.io/addon/skin/manifest.json">
 <meta name="theme-color" content="#ffffff">
-
-<!-- CSSまとめ -->
-<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/style.css">
-<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/css/color.css">
-<link rel="stylesheet" href="https://akaina0809.github.io/addon/skin/css/kotei.css">
 
 <style>
 @font-face {
@@ -27,82 +31,107 @@
 * { font-family: "UzuraFont", cursive; }
 </style>
 
-<!-- deferで非同期読み込み -->
-<script src="https://akaina0809.github.io/addon/skin/js/script_2.js" async></script>
-<script src="https://akaina0809.github.io/addon/skin/js/script.js" async></script>
-<script src="https://akaina0809.github.io/addon/skin/js/script3.js" async></script>
-</head>
-
 <body onselectstart="return false;" onmousedown="return false;">
 
+
+
+<div id="menu_button"><span id="menu_button_line"></span></div>
+<div id="overlay"></div>
+
+
+
 <header>
-  <div id="header_block">
-    <div id="site_title">
-      <a href="https://akaina0809.github.io/dl/Download.html">アドオン(日本語)</a>
-    </div>
-    <nav id="main_menu">
-      <ul>
-        <li><a href="https://akaina0809.github.io/dl/Download.html">ホーム</a></li>
-        <li><a href="./English.html">English</a></li>
-      </ul>
-    </nav>
-  </div>
+<div id="header_block">
+<div id="site_title"><a href="https://akaina0809.github.io/dl/Download.html">アドオン(日本語)</a></div>
+<div id="main_menu">
+<nav>
+<ul>
+ <li><a href="https://akaina0809.github.io/dl/Download.html">ホーム</a></li>
+ <li><a href="./English.html">English</a></li>
+</ul>
+</nav>
+</div>
+</div>
 </header>
 
-<main>
-  <a href="https://github.com/akaina0809/akaina0809.github.io/releases/tag/drop">
-    <button class="button-062">Download</button>
-  </a>
 
-  <article>
-    <section class="block">
-      <div class="content">
-        <h1>Probability Drop Addonとは？</h1>
-        <p>日常組の5%dropの企画の再現addon</p>
-        <p>対応言語：</p>
-        <table class="table_design1">
-          <tbody>
-            <tr><th>ja_JP</th><td>日本語 (日本)</td></tr>
-            <tr><th>en_US</th><td>English (United States)</td></tr>
-            <tr><th>ko_KR</th><td>한국어 (대한민국)</td></tr>
-          </tbody>
-        </table>
-        <p>注意点：完全再現ではありません。</p>
-        <p>このサイトは日本語(Japanese)です。</p>
-        <p>このaddonは @minecraft/server と @minecraft/server-ui を使用した安定板(script)を使用しています。</p>
-        <p>アップデートによって壊れる可能性は低めです。</p>
-        <p>バグ報告は
-          <a href="https://x.com/akaina0809?t=SYQ-_p6uOx_PlWZa1t7Xog&s=09">X</a> または
-          <a href="https://discord.gg/EhKSAMt8fM">Discord</a>まで。
-        </p>
-      </div>
-    </section>
 
-    <section class="block">
-      <div class="content">
-        <!-- 動画は lazy load & preload none -->
-        <video width="100%" height="100%" src="https://akaina0809.github.io/addon/skin/images/addon.mp4"
-          autoplay muted loop playsinline preload="none"></video>
-      </div>
-    </section>
+<d><a href="https://github.com/akaina0809/akaina0809.github.io/releases/tag/drop"><button class="button-062">Download</button></a> </d>
 
-    <section class="block">
-      <div class="content">
-        <h1>内容一覧</h1>
-        <ul>
-          <li>5％の確率でアイテムdrop (ブロックのみ)</li>
-          <li>ブロックとアイテム追加 (オリジナル要素)</li>
-          <li>統合版なのでScript APIを使用</li>
-          <li>opタグでaddon設定可能</li>
-          <li>設定はworldに保存され共有</li>
-        </ul>
-      </div>
-    </section>
-  </article>
-</main>
+
+
+
+<article>
+
+
+
+<div class="block">
+<div class="content">
+<h1>Probability Drop Addonとは？</h1>
+<p>日常組の5%dropの企画の再現addon</p>
+<p>以下の言語が対応しております。</p>
+<p>
+<div class="table_design1">
+<table>
+<tbody>
+ <tr>
+  <th>ja_JP</th>
+  <td>日本語 (日本)</td>
+ </tr>
+ <tr>
+  <th>en_US</th>
+  <td>English (United States)</td>
+ </tr>
+ <tr>
+  <th>ko_KR</th>
+  <td>한국어 (대한민국))</td>
+ </tr>
+</tbody>
+</table>
+</div>
+
+</p>
+<p>しかし注意点としては完全再現ではありません....</p>
+<p>そしてこのサイトは日本語(Japanese)です。</p>
+<p>このaddonはアドオンは@minecraft/serverそして@minecraft/server-uiを使用した安定板(script)を使用しております。</p>
+<p>なのでMinecraftアップデートによっては壊れる可能性(使えなくなる可能性)が少なくなります。</p>
+<p>バグや使えなくなったなどの報告は<a href="https://x.com/akaina0809?t=SYQ-_p6uOx_PlWZa1t7Xog&s=09"><color_ao_0>X(旧Twitter)</color_ao_0></a>または<a href="https://discord.gg/EhKSAMt8fM"><color_ao>discord</color_ao></a>までお願いします。</p>
+</div>
+</div>
+
+<div class="block">
+<div class="content">
+<video width="100%" height="100%" src="https://akaina0809.github.io/addon/skin/images/addon.mp4" autoplay muted loop></video>
+</div>
+</div>
+
+<div class="block">
+<div class="content">
+
+<h1>内容一覧</h1>
+
+<p>1, 5％の確率でアイテムdrop(ブロックのみ)</p> 
+<p>2, ブロックとアイテム追加(オリジナル要素)</p> 
+<p>3, java版ではなく統合版なのでScript APIを使用</p> 
+<p>4, opのタグをつけるとaddonの設定ができます。</p> 
+<p>5, 設定はworldに保存されます、なので設定は共有です。</p> 
+
+</div>
+</div>
+
+
+
+</article>
+
+
 
 <footer>
-  <p>Probability Drop Addon(日本語版)</p>
+
+
+<p>Probability Drop Addon(日本語版)</p> 
+
 </footer>
 </body>
 </html>
+
+
