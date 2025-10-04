@@ -12,14 +12,15 @@
   <meta name="Description" content="minecraft 系で役に立つかも？" />
   <meta name="theme-color" content="#f3fca3" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <style>
+  <style>
     .button-combined {
         display: flex;
         justify-content: center;
         align-items: center;
-        position: relative;
-        width: 250px;
-        margin: 50px auto;
+        position: fixed;   /* 画面に固定 */
+        right: 20px;       /* 右から20px */
+        bottom: 20px;      /* 下から20px */
+        width: 180px;
         padding: .9em 2em;
         border: 1px solid #2589d0;
         border-radius: 5px;
@@ -28,6 +29,7 @@
         font-size: 1em;
         overflow: hidden;
         cursor: pointer;
+        z-index: 1000; /* 手前に表示 */
     }
 
     /* Hover */
@@ -55,7 +57,7 @@
     /* Focus */
     .button-combined:focus {
         color: transparent;
-        outline: none; /* 枠線を消したい場合 */
+        outline: none;
     }
 
     .button-combined:focus::before {
@@ -71,7 +73,7 @@
   </style>
 </head>
 <body>
-  <button class="button-combined">ホーム</button>
+  <button class="button-combined" href="https://akaina0809.github.io/">ホーム</button>
   <div class="main">
     <div class="maincontent">
       <h2>minecraft</h2>
