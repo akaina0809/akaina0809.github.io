@@ -22,7 +22,7 @@ let adlist = {
       name: "クリスマス:Christmas site",
       description: "クリスマスプレゼント(2023年)",
       type: ["リソースパック"],
-      junban: 3,
+      junban: 0,
       icon_url: "",
       link: "https://akaina0809.github.io/addon/scoop/pack.html",
       id: ""
