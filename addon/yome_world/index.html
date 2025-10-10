@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>準備中</title>
+
+  <!-- count_set.js を最初に読み込む -->
+  <script src="./js/count_set.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    /* === 背景 === */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: #000 url("https://i.redd.it/two-minecraft-backgrounds-i-made-first-time-using-shaders-v0-9co6s0m3me9d1.png?width=1920&format=png&auto=webp&s=d92e29b598711ebf0c9b9a77f3ee31d4d938a843") center/cover no-repeat;
+      transform-origin: center;
+      animation: zoomLoop 10s ease-in-out infinite;
+      will-change: transform;
+      filter: brightness(0.85);
+    }
+
+    @keyframes zoomLoop {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* === テキスト === */
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    .countdown {
+      display: flex;
+      gap: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+    }
+
+    .unit {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 8px 16px;
+      backdrop-filter: blur(4px);
+    }
+
+    .unit span {
+      font-size: 1.5em;
+      line-height: 1;
+    }
+
+    /* ホームボタン */
+    .home-btn {
+      display:inline-block;
+      padding:10px 24px;
+      background:rgba(255,255,255,0.2);
+      border:2px solid #fff;
+      border-radius:10px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:bold;
+      transition:all .3s;
+    }
+    .home-btn:hover {
+      background:#fff;
+      color:#000;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <h1>配布予定まであと</h1>
+  <div class="countdown">
+    <div class="unit"><span id="years">00</span><small>年</small></div>
+    <div class="unit"><span id="days">00</span><small>日</small></div>
+    <div class="unit"><span id="hours">00</span><small>時</small></div>
+    <div class="unit"><span id="minutes">00</span><small>分</small></div>
+    <div class="unit"><span id="seconds">00</span><small>秒</small></div>
+  </div>
+
+  <h2><a href="https://akaina0809.github.io/" class="home-btn">ホームへ</a></h2>
+
+<script>
+  // ここで使いたいセットを選択
+  const { time, mode } = a2();
+  const until = new Date(time);
+  function updateCountdown() {
+    const now = new Date();
+    const diff = until - now;
+    if (diff <= 0) {
+      location.href = mode;
+      return;
+    }
+
+    const sec = Math.floor(diff / 1000);
+    const years = Math.floor(sec / (86400 * 365));
+    const daysLeft = sec - years * 86400 * 365;
+    const d = Math.floor(daysLeft / 86400);
+    const h = Math.floor((daysLeft % 86400) / 3600);
+    const m = Math.floor((daysLeft % 3600) / 60);
+    const s = daysLeft % 60;
+
+    document.getElementById("years").textContent = years.toString().padStart(2, "0");
+    document.getElementById("days").textContent = d.toString().padStart(2, "0");
+    document.getElementById("hours").textContent = h.toString().padStart(2, "0");
+    document.getElementById("minutes").textContent = m.toString().padStart(2, "0");
+    document.getElementById("seconds").textContent = s.toString().padStart(2, "0");
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
