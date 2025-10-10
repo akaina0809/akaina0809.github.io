@@ -41,8 +41,8 @@ let adlist = {
       description: "配布予定",
       type: ["ワールド"],
       junban: 3,
-      icon_url: "https://akaina0809.github.io/addon/Probability_Drop/pack_icon.png?raw=true",
-      link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
+      icon_url: "https://akaina0809.github.io/addon/no.png?raw=true",
+      link: "https://akaina0809.github.io/addon/yome_world/index.html",
       id: "release-info3"
     },
   ]
