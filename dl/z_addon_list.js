@@ -36,6 +36,14 @@ let adlist = {
       link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
       id: "release-info3"
     },
-    
+    {
+      name: "人生をやり直そう....",
+      description: "配布予定",
+      type: ["ワールド"],
+      junban: 3,
+      icon_url: "https://akaina0809.github.io/addon/Probability_Drop/pack_icon.png?raw=true",
+      link: "https://akaina0809.github.io/addon/Probability_Drop/index.html",
+      id: "release-info3"
+    },
   ]
 }
