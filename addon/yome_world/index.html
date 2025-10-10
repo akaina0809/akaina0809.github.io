@@ -4,10 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>準備中</title>
-
-  <!-- count_set.js を最初に読み込む -->
-  <script src="https://raw.githubusercontent.com/akaina0809/akaina0809.github.io/main/js/count_set.js"></script>
-
+  <script src="https://akaina0809.github.io/js/count_set.js"></script>
   <style>
     html, body {
       margin: 0;
@@ -20,6 +17,7 @@
       align-items: center;
       justify-content: center;
       color: #fff;
+      background: #000;
     }
 
     /* === 背景 === */
@@ -27,11 +25,12 @@
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: #000 url("https://i.redd.it/two-minecraft-backgrounds-i-made-first-time-using-shaders-v0-9co6s0m3me9d1.png?width=1920&format=png&auto=webp&s=d92e29b598711ebf0c9b9a77f3ee31d4d938a843") center/cover no-repeat;
+      background: #000 center/cover no-repeat;
       transform-origin: center;
       animation: zoomLoop 10s ease-in-out infinite;
       will-change: transform;
       filter: brightness(0.85);
+      transition: background-image 2s ease-in-out;
     }
 
     @keyframes zoomLoop {
@@ -40,7 +39,6 @@
       100% { transform: scale(1); }
     }
 
-    /* === テキスト === */
     h1 {
       font-size: 2em;
       margin-bottom: 20px;
@@ -73,7 +71,6 @@
       line-height: 1;
     }
 
-    /* ホームボタン */
     .home-btn {
       display:inline-block;
       padding:10px 24px;
@@ -92,7 +89,7 @@
   </style>
 </head>
 <body>
-  <div class="bg"></div>
+  <div class="bg" id="bg"></div>
 
   <h1>配布予定まであと</h1>
   <div class="countdown">
@@ -105,35 +102,53 @@
 
   <h2><a href="https://akaina0809.github.io/" class="home-btn">ホームへ</a></h2>
 
-<script>
-  // ここで使いたいセットを選択
-  const { time, mode } = a2();
-  const until = new Date(time);
-  function updateCountdown() {
-    const now = new Date();
-    const diff = until - now;
-    if (diff <= 0) {
-      location.href = mode;
-      return;
+  <script>
+    // === 背景を季節ごとに切り替える ===
+    const bg = document.getElementById("bg");
+    const month = new Date().getMonth() + 1; // 1～12
+
+    if ([3,4,5].includes(month)) {
+      // 🌸 春
+      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1558684482-58f2c03a1233?auto=format&fit=crop&w=1920&q=80')";
+    } else if ([6,7,8].includes(month)) {
+      // 🌊 夏
+      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80')";
+    } else if ([9,10,11].includes(month)) {
+      // 🍁 秋
+      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80')";
+    } else {
+      // ❄️ 冬（12～2月）
+      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1920&q=80')";
     }
 
-    const sec = Math.floor(diff / 1000);
-    const years = Math.floor(sec / (86400 * 365));
-    const daysLeft = sec - years * 86400 * 365;
-    const d = Math.floor(daysLeft / 86400);
-    const h = Math.floor((daysLeft % 86400) / 3600);
-    const m = Math.floor((daysLeft % 3600) / 60);
-    const s = daysLeft % 60;
+    // === カウントダウン ===
+    const { time, mode } = a1();
+    const until = new Date(time);
 
-    document.getElementById("years").textContent = years.toString().padStart(2, "0");
-    document.getElementById("days").textContent = d.toString().padStart(2, "0");
-    document.getElementById("hours").textContent = h.toString().padStart(2, "0");
-    document.getElementById("minutes").textContent = m.toString().padStart(2, "0");
-    document.getElementById("seconds").textContent = s.toString().padStart(2, "0");
-  }
+    function updateCountdown() {
+      const now = new Date();
+      const diff = until - now;
+      if (diff <= 0) {
+        location.href = mode;
+        return;
+      }
+      const sec = Math.floor(diff / 1000);
+      const years = Math.floor(sec / (86400 * 365));
+      const daysLeft = sec - years * 86400 * 365;
+      const d = Math.floor(daysLeft / 86400);
+      const h = Math.floor((daysLeft % 86400) / 3600);
+      const m = Math.floor((daysLeft % 3600) / 60);
+      const s = daysLeft % 60;
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
+      document.getElementById('years').textContent = years.toString().padStart(2, '0');
+      document.getElementById('days').textContent = d.toString().padStart(2, '0');
+      document.getElementById('hours').textContent = h.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = m.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = s.toString().padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
