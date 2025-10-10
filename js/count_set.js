@@ -1,8 +1,8 @@
 // count_set.js
 // 年月日と時刻を分けて指定する関数
 function a1() {
-  const nengetu = "2025/10/10"; // ← 年月日
-  const zikan = "18:21";         // ← 時刻
+  const nengetu = "2026/07/07"; // ← 年月日
+  const zikan = "21:30";         // ← 時刻
   const time = new Date(`${nengetu} ${zikan}`);
   const mode = "ok.html";
   return { time, mode };
