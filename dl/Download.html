@@ -222,6 +222,13 @@ li {
     padding: 10px;
     border-radius: 5px;
 }
+	.worldpa {
+  background-color: #6dc7ff;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: 2px;
+}
+
 </style>
 </head>
 <script type="text/javascript" src="./z_addon_list.js"></script>
@@ -239,17 +246,18 @@ li {
 
       <p style="text-align: right;">
         並べ替え: 
-        <select id="narabekae" onchange="yomikomi()">
+        <select id="narabekae" onchange="akaina0809()">
           <option id="aiueo">あいうえお順</option>
           <option id="atarasii">新しい順</option>
           <option id="hurui">古い順</option>
         </select>
         　絞り込む: 
-        <select id="siborikomi" onchange="yomikomi()">
-          <option id="defalut">全部</option>
-          <option id="リソースパック">リソースパック</option>
-          <option id="ビヘイビアーパック">ビヘイビアーパック</option>
-        </select>
+<select id="siborikomi" onchange="akaina0809()">
+  <option id="defalut">全部</option>
+  <option id="リソースパック">リソースパック</option>
+  <option id="ビヘイビアーパック">ビヘイビアーパック</option>
+  <option id="ワールド">ワールド</option> <!-- 追加 -->
+</select>
       </p>
       <div id="addon_list_div"></div>
       <hr>
@@ -260,7 +268,7 @@ li {
 
 <script type="text/javascript">
 
-  function yomikomi() {
+  function akaina0809() {
     while (addon_list_div.firstChild) {
       addon_list_div.removeChild(addon_list_div.firstChild)
     }
@@ -280,10 +288,22 @@ li {
       pack_flame.classList.add("pack_flame")
       addon_list_div.appendChild(pack_flame)
       
-      pack_flame.innerHTML = `<img src="${obj.icon_url}" witdh=80 height=80><div class="text_content"><span class="pack_name"><a href="${obj.link}">${obj.name}</a></span><br>${obj.description}<br>${obj.type.includes("リソースパック") ? `<span class="risopa">リソースパック</span>` : ``}${obj.type.includes("ビヘイビアーパック") ? `<span class="bihepa">ビヘイビアーパック</span>` : ``}</div><br><div id="${obj.id}" class="release-info"></div></div>`
-    }
+    pack_flame.innerHTML = `
+  <img src="${obj.icon_url}" width="80" height="80">
+  <div class="text_content">
+    <span class="pack_name"><a href="${obj.link}">${obj.name}</a></span><br>
+    ${obj.description}<br>
+    ${obj.type.includes("リソースパック") ? `<span class="risopa">リソースパック</span>` : ``}
+    ${obj.type.includes("ビヘイビアーパック") ? `<span class="bihepa">ビヘイビアーパック</span>` : ``}
+    ${obj.type.includes("ワールド") ? `<span class="worldpa">ワールド</span>` : ``}
+  </div>
+  <br>
+  <div id="${obj.id}" class="release-info"></div>
+`;
+ 
+	}
   }
-  yomikomi()
+  akaina0809()
 </script>
 </body>
 <!--/container-->
@@ -292,4 +312,5 @@ li {
 <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 </html>
+
 
