@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>準備中</title>
-  <script src="https://akaina0809.github.io/js/count_set.js"></script>
+
+  <!-- count_set.js を最初に読み込む -->
+  <script src="./js/count_set.js"></script>
+
   <style>
     html, body {
       margin: 0;
@@ -17,7 +20,6 @@
       align-items: center;
       justify-content: center;
       color: #fff;
-      background: #000;
     }
 
     /* === 背景 === */
@@ -33,12 +35,14 @@
       transition: background-image 2s ease-in-out;
     }
 
+
     @keyframes zoomLoop {
       0%   { transform: scale(1); }
       50%  { transform: scale(1.08); }
       100% { transform: scale(1); }
     }
 
+    /* === テキスト === */
     h1 {
       font-size: 2em;
       margin-bottom: 20px;
@@ -71,6 +75,7 @@
       line-height: 1;
     }
 
+    /* ホームボタン */
     .home-btn {
       display:inline-block;
       padding:10px 24px;
@@ -109,16 +114,16 @@
 
     if ([3,4,5].includes(month)) {
       // 🌸 春
-      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1558684482-58f2c03a1233?auto=format&fit=crop&w=1920&q=80')";
+      bg.style.backgroundImage = "url('https://i.redd.it/two-minecraft-backgrounds-i-made-first-time-using-shaders-v0-9co6s0m3me9d1.png?width=1920&format=png&auto=webp&s=d92e29b598711ebf0c9b9a77f3ee31d4d938a843')";
     } else if ([6,7,8].includes(month)) {
       // 🌊 夏
       bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80')";
     } else if ([9,10,11].includes(month)) {
       // 🍁 秋
-      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=1920&q=80')";
+      bg.style.backgroundImage = "url('https://akaina0809.github.io/images/6300219i.jpg')";
     } else {
       // ❄️ 冬（12～2月）
-      bg.style.backgroundImage = "url('https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?auto=format&fit=crop&w=1920&q=80')";
+      bg.style.backgroundImage = "url('https://i.redd.it/i-make-minecraft-wallpaper-snow-edition-v0-uwgrubje8gza1.png?width=1920&format=png&auto=webp&s=927d9b7a599aa55b8ade82918eac58901eec3b7b')";
     }
 
     // === カウントダウン ===
