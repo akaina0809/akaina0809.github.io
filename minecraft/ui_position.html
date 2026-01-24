@@ -16,7 +16,18 @@
     font-family: sans-serif;
   }
 
-
+  .frame {
+    width: 600px;
+    height: 350px;
+    margin: 0 auto;
+    border: 4px solid #000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    background: #000;
+    margin: 0 auto 15px auto; /* block中央寄せ */
+  }
   .screen {
     
     background: #222;
@@ -41,7 +52,6 @@
 
   .item:hover {
     background: rgba(255,255,255,0.3);
-    transform: scale(1.05);
   }
 
   .top_left { top: 10px; left: 10px; }
@@ -64,7 +74,7 @@
 </head>
 
 <body>
-  <div class="screen">
+  <div class="frame">
     <div class="item top_left" data-copy="top_left">top_left</div>
     <div class="item top_middle" data-copy="top_middle">top_middle</div>
     <div class="item top_right" data-copy="top_right">top_right</div>
