@@ -99,7 +99,7 @@
       const text = el.dataset.copy;
       navigator.clipboard.writeText(text);
       sound.currentTime = 0;
-      sound.play()
+      sound.play();
       document.getElementById("log").textContent =
         "コピーしました: " + text;
     });
