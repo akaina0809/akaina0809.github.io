@@ -28,7 +28,7 @@
     background: #000;
     margin: 0 auto 15px auto; /* block中央寄せ */
   }
-  .screen {
+  .screen, .screen2{
     
     background: #222;
     position: relative;
@@ -75,6 +75,8 @@
 </head>
 
 <body>
+  
+<div class="screen1">
   <div class="screen">
     <div class="item top_left" data-copy="top_left">top_left</div>
     <div class="item top_middle" data-copy="top_middle">top_middle</div>
@@ -87,11 +89,12 @@
     <div class="item bottom_left" data-copy="bottom_left">bottom_left</div>
     <div class="item bottom_middle" data-copy="bottom_middle">bottom_middle</div>
     <div class="item bottom_right" data-copy="bottom_right">bottom_right</div>
-  <div class="log" id="log">クリックするとコピーされます</div>
+  
   </div>
   <!-- コピー音 -->
   <audio id="copySound" src="button.mp3" preload="auto"></audio>
-
+  <div class="log" id="log">クリックするとコピーされます</div>
+</div>
 <script>
   
   const sound = document.getElementById("copySound");
