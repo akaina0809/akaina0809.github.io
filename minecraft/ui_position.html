@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Anchor Copy Tool</title>
+<style>
+  body {
+    background: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+    font-family: sans-serif;
+  }
+
+  .screen {
+    position: relative;
+    width: 600px;
+    height: 350px;
+    border: 3px solid white;
+    margin-bottom: 15px;
+  }
+
+  .item {
+    position: absolute;
+    padding: 6px 10px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.15s;
+  }
+
+  .item:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.05);
+  }
+
+  .top_left { top: 10px; left: 10px; }
+  .top_middle { top: 10px; left: 50%; transform: translateX(-50%); }
+  .top_right { top: 10px; right: 10px; }
+
+  .left_middle { top: 50%; left: 10px; transform: translateY(-50%); }
+  .center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .right_middle { top: 50%; right: 10px; transform: translateY(-50%); }
+
+  .bottom_left { bottom: 10px; left: 10px; }
+  .bottom_middle { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .bottom_right { bottom: 10px; right: 10px; }
+
+  .log {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+</style>
+</head>
+
+<body>
+  <div class="screen">
+    <div class="item top_left" data-copy="top_left">top_left</div>
+    <div class="item top_middle" data-copy="top_middle">top_middle</div>
+    <div class="item top_right" data-copy="top_right">top_right</div>
+
+    <div class="item left_middle" data-copy="left_middle">left_middle</div>
+    <div class="item center" data-copy="center">center</div>
+    <div class="item right_middle" data-copy="right_middle">right_middle</div>
+
+    <div class="item bottom_left" data-copy="bottom_left">bottom_left</div>
+    <div class="item bottom_middle" data-copy="bottom_middle">bottom_middle</div>
+    <div class="item bottom_right" data-copy="bottom_right">bottom_right</div>
+  </div>
+
+  <div class="log" id="log">クリックするとコピーされます</div>
+
+<script>
+  document.querySelectorAll(".item").forEach(el => {
+    el.addEventListener("click", () => {
+      const text = el.dataset.copy;
+      navigator.clipboard.writeText(text);
+      document.getElementById("log").textContent =
+        "コピーしました: " + text;
+    });
+  });
+</script>
+</body>
+</html>
