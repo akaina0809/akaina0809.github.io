@@ -87,14 +87,19 @@
     <div class="item bottom_middle" data-copy="bottom_middle">bottom_middle</div>
     <div class="item bottom_right" data-copy="bottom_right">bottom_right</div>
   </div>
-
+  <!-- コピー音 -->
+  <audio id="copySound" src="https://soundeffect-lab.info/sound/button/mp3/decision39.mp31" preload="auto"></audio>
   <div class="log" id="log">クリックするとコピーされます</div>
 
 <script>
+  
+  const sound = document.getElementById("copySound");
   document.querySelectorAll(".item").forEach(el => {
     el.addEventListener("click", () => {
       const text = el.dataset.copy;
       navigator.clipboard.writeText(text);
+      sound.currentTime = 0;
+      sound.play()
       document.getElementById("log").textContent =
         "コピーしました: " + text;
     });
