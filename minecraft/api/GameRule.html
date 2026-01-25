@@ -59,50 +59,52 @@ table td:hover {
 </head>
 <body>
 
-<h1>GameRules プロパティ一覧（Minecraft Bedrock Script API）</h1>
-<p>以下は、スクリプト API で扱える世界のルール設定です。各ルールは boolean（真偽値）または number（数値）になります。:contentReference[oaicite:1]{index=1}</p>
+<h1>GameRules プロパティ一覧（Minecraft Bedrock）</h1>
+<p>以下は、minecraft世界のルール設定です。</p>
 
 <table>
   <tr><th>プロパティ</th><th>型</th><th>説明（簡易）</th></tr>
-  <tr><td>commandBlockOutput</td><td>boolean</td>コマンドブロック実行結果の出力制御:contentReference[oaicite:2]{index=2}</td></tr>
-  <tr><td>commandBlocksEnabled</td><td>boolean</td>コマンドブロックの有効化:contentReference[oaicite:3]{index=3}</td></tr>
-  <tr><td>doDayLightCycle</td><td>boolean</td>昼夜サイクルの進行制御:contentReference[oaicite:4]{index=4}</td></tr>
-  <tr><td>doEntityDrops</td><td>boolean</td>エンティティのドロップ制御:contentReference[oaicite:5]{index=5}</td></tr>
-  <tr><td>doFireTick</td><td>boolean</td>火の広がり制御:contentReference[oaicite:6]{index=6}</td></tr>
-  <tr><td>doImmediateRespawn</td><td>boolean</td>即時リスポーン制御:contentReference[oaicite:7]{index=7}</td></tr>
-  <tr><td>doInsomnia</td><td>boolean</td>不眠症モブ（ファントム）スポーン制御:contentReference[oaicite:8]{index=8}</td></tr>
-  <tr><td>doLimitedCrafting</td><td>boolean</td>制限付きクラフティング制御:contentReference[oaicite:9]{index=9}</td></tr>
-  <tr><td>doMobLoot</td><td>boolean</td>モブドロップ制御:contentReference[oaicite:10]{index=10}</td></tr>
-  <tr><td>doMobSpawning</td><td>boolean</td>モブスポーン制御:contentReference[oaicite:11]{index=11}</td></tr>
-  <tr><td>doTileDrops</td><td>boolean</td>ブロック破壊ドロップ制御:contentReference[oaicite:12]{index=12}</td></tr>
-  <tr><td>doWeatherCycle</td><td>boolean</td>天候サイクル制御:contentReference[oaicite:13]{index=13}</td></tr>
-  <tr><td>drowningDamage</td><td>boolean</td>溺れダメージ制御:contentReference[oaicite:14]{index=14}</td></tr>
-  <tr><td>fallDamage</td><td>boolean</td>落下ダメージ制御:contentReference[oaicite:15]{index=15}</td></tr>
-  <tr><td>fireDamage</td><td>boolean</td>火ダメージ制御:contentReference[oaicite:16]{index=16}</td></tr>
-  <tr><td>freezeDamage</td><td>boolean</td>凍結ダメージ制御:contentReference[oaicite:17]{index=17}</td></tr>
-  <tr><td>functionCommandLimit</td><td>number</td>機能コマンド上限設定:contentReference[oaicite:18]{index=18}</td></tr>
-  <tr><td>keepInventory</td><td>boolean</td>死亡時アイテム保持:contentReference[oaicite:19]{index=19}</td></tr>
-  <tr><td>locatorBar</td><td>boolean</td>ロケーターバー表示（ベータ可能性あり）:contentReference[oaicite:20]{index=20}</td></tr>
-  <tr><td>maxCommandChainLength</td><td>number</td>コマンドチェーンの最大長:contentReference[oaicite:21]{index=21}</td></tr>
-  <tr><td>mobGriefing</td><td>boolean</td>Mobの地形破壊制御:contentReference[oaicite:22]{index=22}</td></tr>
-  <tr><td>naturalRegeneration</td><td>boolean</td>自然回復制御:contentReference[oaicite:23]{index=23}</td></tr>
-  <tr><td>playersSleepingPercentage</td><td>number</td>寝ているプレイヤー割合目標:contentReference[oaicite:24]{index=24}</td></tr>
-  <tr><td>projectilesCanBreakBlocks</td><td>boolean</td>飛び道具のブロック破壊制御:contentReference[oaicite:25]{index=25}</td></tr>
-  <tr><td>pvp</td><td>boolean</td>プレイヤー間ダメージ（PvP）制御:contentReference[oaicite:26]{index=26}</td></tr>
-  <tr><td>randomTickSpeed</td><td>number</td>ランダムティック速度設定:contentReference[oaicite:27]{index=27}</td></tr>
-  <tr><td>recipesUnlock</td><td>boolean</td>レシピ自動解除制御:contentReference[oaicite:28]{index=28}</td></tr>
-  <tr><td>respawnBlocksExplode</td><td>boolean</td>リスポーンブロック爆発制御:contentReference[oaicite:29]{index=29}</td></tr>
-  <tr><td>sendCommandFeedback</td><td>boolean</td>コマンド出力フィードバック制御:contentReference[oaicite:30]{index=30}</td></tr>
-  <tr><td>showBorderEffect</td><td>boolean</td>ワールド境界エフェクト表示:contentReference[oaicite:31]{index=31}</td></tr>
-  <tr><td>showCoordinates</td><td>boolean</td>座標表示制御:contentReference[oaicite:32]{index=32}</td></tr>
-  <tr><td>showDaysPlayed</td><td>boolean</td>経過日数表示（追加プロパティ）:contentReference[oaicite:33]{index=33}</td></tr>
-  <tr><td>showDeathMessages</td><td>boolean</td>死亡メッセージ表示:contentReference[oaicite:34]{index=34}</td></tr>
-  <tr><td>showRecipeMessages</td><td>boolean</td>レシピメッセージ表示:contentReference[oaicite:35]{index=35}</td></tr>
-  <tr><td>showTags</td><td>boolean</td>タグ情報表示:contentReference[oaicite:36]{index=36}</td></tr>
-  <tr><td>spawnRadius</td><td>number</td>プレイヤーリスポーン半径:contentReference[oaicite:37]{index=37}</td></tr>
-  <tr><td>tntExplodes</td><td>boolean</td>TNT爆発制御:contentReference[oaicite:38]{index=38}</td></tr>
-  <tr><td>tntExplosionDropDecay</td><td>boolean</td>TNT爆発ドロップ減衰制御:contentReference[oaicite:39]{index=39}</td></tr>
+
+  <tr><td>commandBlockOutput</td><td>boolean</td><td>コマンドブロック実行結果の出力制御</td></tr>
+  <tr><td>commandBlocksEnabled</td><td>boolean</td><td>コマンドブロックの有効化</td></tr>
+  <tr><td>doDayLightCycle</td><td>boolean</td><td>昼夜サイクルの進行制御</td></tr>
+  <tr><td>doEntityDrops</td><td>boolean</td><td>エンティティのドロップ制御</td></tr>
+  <tr><td>doFireTick</td><td>boolean</td><td>火の広がり制御</td></tr>
+  <tr><td>doImmediateRespawn</td><td>boolean</td><td>即時リスポーン制御</td></tr>
+  <tr><td>doInsomnia</td><td>boolean</td><td>不眠症モブ（ファントム）スポーン制御</td></tr>
+  <tr><td>doLimitedCrafting</td><td>boolean</td><td>制限付きクラフティング制御</td></tr>
+  <tr><td>doMobLoot</td><td>boolean</td><td>モブドロップ制御</td></tr>
+  <tr><td>doMobSpawning</td><td>boolean</td><td>モブスポーン制御</td></tr>
+  <tr><td>doTileDrops</td><td>boolean</td><td>ブロック破壊ドロップ制御</td></tr>
+  <tr><td>doWeatherCycle</td><td>boolean</td><td>天候サイクル制御</td></tr>
+  <tr><td>drowningDamage</td><td>boolean</td><td>溺れダメージ制御</td></tr>
+  <tr><td>fallDamage</td><td>boolean</td><td>落下ダメージ制御</td></tr>
+  <tr><td>fireDamage</td><td>boolean</td><td>火ダメージ制御</td></tr>
+  <tr><td>freezeDamage</td><td>boolean</td><td>凍結ダメージ制御</td></tr>
+  <tr><td>functionCommandLimit</td><td>number</td><td>機能コマンド上限設定</td></tr>
+  <tr><td>keepInventory</td><td>boolean</td><td>死亡時アイテム保持</td></tr>
+  <tr><td>locatorBar</td><td>boolean</td><td>ロケーターバー表示</td></tr>
+  <tr><td>maxCommandChainLength</td><td>number</td><td>コマンドチェーンの最大長</td></tr>
+  <tr><td>mobGriefing</td><td>boolean</td><td>Mobの地形破壊制御</td></tr>
+  <tr><td>naturalRegeneration</td><td>boolean</td><td>自然回復制御</td></tr>
+  <tr><td>playersSleepingPercentage</td><td>number</td><td>寝ているプレイヤー割合目標</td></tr>
+  <tr><td>projectilesCanBreakBlocks</td><td>boolean</td><td>飛び道具のブロック破壊制御</td></tr>
+  <tr><td>pvp</td><td>boolean</td><td>プレイヤー間ダメージ（PvP）制御</td></tr>
+  <tr><td>randomTickSpeed</td><td>number</td><td>ランダムティック速度設定</td></tr>
+  <tr><td>recipesUnlock</td><td>boolean</td><td>レシピ自動解除制御</td></tr>
+  <tr><td>respawnBlocksExplode</td><td>boolean</td><td>リスポーンブロック爆発制御</td></tr>
+  <tr><td>sendCommandFeedback</td><td>boolean</td><td>コマンド出力フィードバック制御</td></tr>
+  <tr><td>showBorderEffect</td><td>boolean</td><td>ワールド境界エフェクト表示</td></tr>
+  <tr><td>showCoordinates</td><td>boolean</td><td>座標表示制御</td></tr>
+  <tr><td>showDaysPlayed</td><td>boolean</td><td>経過日数表示</td></tr>
+  <tr><td>showDeathMessages</td><td>boolean</td><td>死亡メッセージ表示</td></tr>
+  <tr><td>showRecipeMessages</td><td>boolean</td><td>レシピメッセージ表示</td></tr>
+  <tr><td>showTags</td><td>boolean</td><td>タグ情報表示</td></tr>
+  <tr><td>spawnRadius</td><td>number</td><td>プレイヤーリスポーン半径</td></tr>
+  <tr><td>tntExplodes</td><td>boolean</td><td>TNT爆発制御</td></tr>
+  <tr><td>tntExplosionDropDecay</td><td>boolean</td><td>TNT爆発ドロップ減衰制御</td></tr>
 </table>
+
 <div class="mode-select">
   <button id="apiBtn" class="mode active">API</button>
   <button id="cmdBtn" class="mode">Command</button>
