@@ -145,16 +145,24 @@ function copy(text) {
 document.querySelectorAll("table td:first-child").forEach(td => {
   td.addEventListener("click", () => {
     const prop = td.innerText.trim();
+    const type = td.parentElement.children[1].innerText.trim();
 
     if (mode === "api") {
-      copy(`world.gameRules.${prop} = false;`);
+     if (type === "number") {
+　      copy(`world.gameRules.${prop} = 1;`);
+      } else {
+　      copy(`world.gameRules.${prop} = false;`);
+      }
     } else {
-      copy(`/gamerule ${prop} true`);
+      if (type === "number") {
+        copy(`/gamerule ${prop} 1`);
+      } else {
+        copy(`/gamerule ${prop} true`);
+      }
     }
   });
 });
 </script>
-
 
 </body>
 </html>
