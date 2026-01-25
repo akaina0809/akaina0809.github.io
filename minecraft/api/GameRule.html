@@ -60,6 +60,15 @@ table td:hover {
 <body>
 
 <h1>GameRules プロパティ一覧（Minecraft Bedrock）</h1>
+  
+<div class="mode-select">
+  copy内容
+  <button id="apiBtn" class="mode active">API</button>
+  <button id="cmdBtn" class="mode">Command</button>
+</div>
+
+<audio id="copySound" src="button.mp3" preload="auto"></audio>
+<div class="log" id="log">クリックでコピーされます</div>
 <p>以下は、minecraft世界のルール設定です。</p>
 
 <table>
@@ -104,14 +113,6 @@ table td:hover {
   <tr><td>tntExplodes</td><td>boolean</td><td>TNT爆発制御</td></tr>
   <tr><td>tntExplosionDropDecay</td><td>boolean</td><td>TNT爆発ドロップ減衰制御</td></tr>
 </table>
-
-<div class="mode-select">
-  <button id="apiBtn" class="mode active">API</button>
-  <button id="cmdBtn" class="mode">Command</button>
-</div>
-
-<audio id="copySound" src="button.mp3" preload="auto"></audio>
-<div class="log" id="log">クリックでコピーされます</div>
 
 <script>
 let mode = "api";
