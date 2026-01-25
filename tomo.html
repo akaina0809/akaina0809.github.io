@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>MP3 視聴 & ダウンロード</title>
+
+<style>
+body {
+  background:#0f172a;
+  color:white;
+  font-family:sans-serif;
+  padding:20px;
+}
+
+.player {
+  background:#1e293b;
+  padding:20px;
+  border-radius:12px;
+  width:300px;
+}
+
+a.download {
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 12px;
+  background:#38bdf8;
+  color:black;
+  border-radius:8px;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="player">
+  <h3>MP3 サンプル</h3>
+
+  <!-- 視聴 -->
+  <audio controls>
+    <source src="tomo/DOG_PARTY_DIY.mp3" type="audio/mpeg">
+    お使いのブラウザは audio をサポートしていません。
+  </audio>
+
+  <!-- ダウンロード -->
+  <br>
+  <a href="tomo/DOG_PARTY_DIY.mp3" download="DOG_PARTY_DIY.mp3">MP3 をダウンロード</a>
+</div>
+
+</body>
+</html>
