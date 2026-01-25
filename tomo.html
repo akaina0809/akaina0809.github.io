@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>MP3 視聴 & ダウンロード</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
@@ -17,8 +18,16 @@ body {
   padding:20px;
   border-radius:12px;
   width:300px;
-  height:200px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
+
+@media (max-width: 600px) {
+  .player {
+    width: 100%;
+  }
+}
+
 
 
 .download {
