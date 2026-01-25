@@ -29,6 +29,32 @@
     table td:hover {
      background: rgba(56,189,248,.2);
    }
+    .mode-select {
+  margin-bottom: 10px;
+}
+.mode {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #334155;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.mode.active {
+  background: #38bdf8;
+  color: #000;
+}
+
+table td {
+  cursor: pointer;
+}
+
+table td:hover {
+  background: rgba(56,189,248,.2);
+}
+
   </style>
 </head>
 <body>
@@ -77,28 +103,55 @@
   <tr><td>tntExplodes</td><td>boolean</td>TNT爆発制御:contentReference[oaicite:38]{index=38}</td></tr>
   <tr><td>tntExplosionDropDecay</td><td>boolean</td>TNT爆発ドロップ減衰制御:contentReference[oaicite:39]{index=39}</td></tr>
 </table>
-  <!-- コピー音 -->
-  <audio id="copySound" src="../button.mp3" preload="auto"></audio>
-  <div class="log" id="log">クリックするとコピーされます</div>
+<div class="mode-select">
+  <button id="apiBtn" class="mode active">API</button>
+  <button id="cmdBtn" class="mode">Command</button>
+</div>
+
+<audio id="copySound" src="button.mp3" preload="auto"></audio>
+<div class="log" id="log">クリックでコピーされます</div>
+
 <script>
+let mode = "api";
+
+const apiBtn = document.getElementById("apiBtn");
+const cmdBtn = document.getElementById("cmdBtn");
 const sound = document.getElementById("copySound");
 const log = document.getElementById("log");
 
-// table 内をすべて対象にする
-document.querySelectorAll("table td:first-child").forEach(el => {
-  el.style.cursor = "pointer";
+apiBtn.onclick = () => {
+  mode = "api";
+  apiBtn.classList.add("active");
+  cmdBtn.classList.remove("active");
+};
 
-  el.addEventListener("click", () => {
-    const text = el.parentElement.innerText;
-    
-    navigator.clipboard.writeText(text).then(() => {
-      sound.currentTime = 0;
-      sound.play();
-      log.textContent = "コピーしました: " + text;
-    });
+cmdBtn.onclick = () => {
+  mode = "cmd";
+  cmdBtn.classList.add("active");
+  apiBtn.classList.remove("active");
+};
+
+function copy(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    sound.currentTime = 0;
+    sound.play();
+    log.textContent = "コピーしました: " + text;
+  });
+}
+
+document.querySelectorAll("table td:first-child").forEach(td => {
+  td.addEventListener("click", () => {
+    const prop = td.innerText.trim();
+
+    if (mode === "api") {
+      copy(`world.gameRules.${prop} = false;`);
+    } else {
+      copy(`/gamerule ${prop} true`);
+    }
   });
 });
 </script>
+
 
 </body>
 </html>
