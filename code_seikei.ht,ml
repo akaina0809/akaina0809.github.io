@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>コード整形デモ</title>
+<style>
+  textarea { width: 100%; height: 150px; }
+  pre { background: #f4f4f4; padding: 10px; border: 1px solid #ccc; overflow: auto; white-space: pre-wrap; }
+  button { margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<h2>コード入力</h2>
+<textarea id="codeInput"></textarea>
+
+<h2>整形オプション</h2>
+<select id="indentSelect">
+  <option value="2">インデント 2スペース</option>
+  <option value="3">インデント 3スペース</option>
+  <option value="4">インデント 4スペース</option>
+  <option value="minify">圧縮</option>
+</select>
+<button id="formatBtn">整形</button>
+
+<h2>整形後</h2>
+<pre><code id="formattedCode"></code></pre>
+<button id="copyBtn">コピー</button>
+
+<script>
+const formatBtn = document.getElementById('formatBtn');
+const copyBtn = document.getElementById('copyBtn');
+const codeInput = document.getElementById('codeInput');
+const formattedCode = document.getElementById('formattedCode');
+
+formatBtn.addEventListener('click', () => {
+  let code = codeInput.value;
+  let option = document.getElementById('indentSelect').value;
+  let formatted;
+
+  if(option === 'minify') {
+    // 圧縮：改行とインデントを削除
+    formatted = code.replace(/\n\s*/g, '');
+  } else {
+    // インデント指定
+    let spaces = ' '.repeat(Number(option));
+    formatted = code.split('\n').map(line => line.trimStart()).map(line => spaces + line).join('\n');
+  }
+
+  formattedCode.textContent = formatted;
+});
+
+copyBtn.addEventListener('click', () => {
+  // クリップボードにコピー
+  navigator.clipboard.writeText(formattedCode.textContent)
+    .then(() => alert('コピーしました！'))
+    .catch(err => alert('コピーに失敗しました: ' + err));
+});
+</script>
+
+</body>
+</html>
