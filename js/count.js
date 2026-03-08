@@ -8,7 +8,7 @@ const fileNames = [
 ];
 
 const set = " DL";
-const apiUrl = `https://akaina0809.akainaqiaotian.workers.dev?owner=${owner}&repo=${repo}`;
+const apiUrl = `https://api.github.com/repos/${owner}/${repo}/releases`;
 
 document.addEventListener("DOMContentLoaded", () => {
   fetchReleaseInfo();
