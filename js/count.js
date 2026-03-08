@@ -1,15 +1,13 @@
 const owner = "akaina0809";
 const repo = "dsito";
 
-// 表示対象のファイル名一覧（この順に表示される）
 const fileNames = [
-  'Touhou_Komeiji_Koishi_GUI_V1.5.mcpack',
-  'skin_v2.0.1.mcaddon',
-  'Probability_Drop_Addon.mcaddon'
-
+  "Touhou_Komeiji_Koishi_GUI_V1.5.mcpack",
+  "skin_v2.0.1.mcaddon",
+  "Probability_Drop_Addon.mcaddon"
 ];
 
-const set = ' DL'; // 表示用テキスト
+const set = " DL";
 const apiUrl = `https://akaina0809.akainaqiaotian.workers.dev?owner=${owner}&repo=${repo}`;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,61 +15,47 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(fetchReleaseInfo, 30000);
 });
 
-function fetchReleaseInfo() {
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      const releases = Array.isArray(data) ? data : [];
-      const flatAssets = releases.flatMap(release => release.assets);
+async function fetchReleaseInfo() {
+  try {
+    const response = await fetch(apiUrl);
 
-      // fileNames の順に表示を揃える
-      const filteredData = fileNames.map(name => {
-        const asset = flatAssets.find(a => a.name === name);
-        return {
-          fileName: name,
-          downloadCount: asset ? asset.download_count : 0,
-          downloadUrl: asset ? asset.browser_download_url : ''
-        };
-      });
+    if (!response.ok) throw new Error("APIエラー");
 
-      displayReleaseInfo(filteredData);
-    })
-    .catch(error => {
-      console.error("エラー:", error);
-      fileNames.forEach((_, index) => {
-        const el = document.getElementById(`release-info${index + 1}`);
-        if (el) el.innerHTML = `<div class="download-info">取得失敗</div>`;
-      });
+    const data = await response.json();
+    const releases = Array.isArray(data) ? data : [];
+    const flatAssets = releases.flatMap(r => r.assets || []);
+
+    const filteredData = fileNames.map(name => {
+      const asset = flatAssets.find(a => a.name === name);
+      return {
+        fileName: name,
+        downloadCount: asset?.download_count ?? 0,
+        downloadUrl: asset?.browser_download_url ?? ""
+      };
     });
+
+    displayReleaseInfo(filteredData);
+
+  } catch (error) {
+    console.error("取得失敗:", error);
+  }
 }
 
-function displayReleaseInfo(fileDataArray) {
-  fileDataArray.forEach((fileData, index) => {
-    const elementId = `release-info${index + 1}`;
-    const targetElement = document.getElementById(elementId);
+function displayReleaseInfo(files) {
+  files.forEach((file, index) => {
+    const el = document.getElementById(`release-info${index + 1}`);
+    if (!el) return;
 
-    if (!targetElement) {
-      console.warn(`要素 '${elementId}' が見つかりませんでした。`);
-      return;
-    }
-
-    const releaseInfoHTML = `<br>
+    el.innerHTML = `
       <div class="release-info">
-        <div class="download-info">
-          <button class="download-button" onclick="downloadAsset('${fileData.downloadUrl}')">Download</button><br>
-          <a>${fileData.downloadCount}${set}</a>
-        </div>
+        <button onclick="downloadAsset('${file.downloadUrl}')">Download</button><br>
+        <span>${file.downloadCount}${set}</span>
       </div>
     `;
-
-    targetElement.innerHTML = releaseInfoHTML;
   });
 }
 
 function downloadAsset(url) {
-  if (url) {
-    window.open(url, '_blank');
-  } else {
-    alert('ダウンロードリンクが取得できませんでした。');
-  }
+  if (url) window.open(url, "_blank");
+  else alert("ダウンロードリンクがありません");
 }
