@@ -1,61 +1,93 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>コード整形デモ</title>
+<title>JS 暗号化ツール</title>
+
+<script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+
 <style>
-  textarea { width: 100%; height: 150px; }
-  pre { background: #f4f4f4; padding: 10px; border: 1px solid #ccc; overflow: auto; white-space: pre-wrap; }
-  button { margin-top: 5px; }
+textarea{
+width:90%;
+height:150px;
+}
+button{
+margin:5px;
+}
 </style>
+
 </head>
 <body>
 
-<h2>コード入力</h2>
-<textarea id="codeInput"></textarea>
+<h2>入力</h2>
+<textarea id="input"></textarea>
+<br>
 
-<h2>整形オプション</h2>
-<select id="indentSelect">
-  <option value="2">インデント 2スペース</option>
-  <option value="3">インデント 3スペース</option>
-  <option value="4">インデント 4スペース</option>
-  <option value="minify">圧縮</option>
-</select>
-<button id="formatBtn">整形</button>
+<button onclick="obf()">難読化</button>
+<button onclick="encode()">暗号化(Base64)</button>
+<button onclick="decode()">復元(Base64)</button>
+<button onclick="copy()">Copy</button>
 
-<h2>整形後</h2>
-<pre><code id="formattedCode"></code></pre>
-<button id="copyBtn">コピー</button>
+<h2>出力</h2>
+<textarea id="output"></textarea>
 
 <script>
-const formatBtn = document.getElementById('formatBtn');
-const copyBtn = document.getElementById('copyBtn');
-const codeInput = document.getElementById('codeInput');
-const formattedCode = document.getElementById('formattedCode');
 
-formatBtn.addEventListener('click', () => {
-  let code = codeInput.value;
-  let option = document.getElementById('indentSelect').value;
-  let formatted;
+function obf(){
 
-  if(option === 'minify') {
-    // 圧縮：改行とインデントを削除
-    formatted = code.replace(/\n\s*/g, '');
-  } else {
-    // インデント指定
-    let spaces = ' '.repeat(Number(option));
-    formatted = code.split('\n').map(line => line.trimStart()).map(line => spaces + line).join('\n');
-  }
+const code =
+document.getElementById("input").value;
 
-  formattedCode.textContent = formatted;
+const result =
+JavaScriptObfuscator.obfuscate(code,{
+compact:true,
+controlFlowFlattening:true,
+controlFlowFlatteningThreshold:1,
+numbersToExpressions:true,
+stringArray:true,
+stringArrayEncoding:["base64"],
+stringArrayThreshold:1
 });
 
-copyBtn.addEventListener('click', () => {
-  // クリップボードにコピー
-  navigator.clipboard.writeText(formattedCode.textContent)
-    .then(() => alert('コピーしました！'))
-    .catch(err => alert('コピーに失敗しました: ' + err));
-});
+document.getElementById("output").value =
+result.getObfuscatedCode();
+
+}
+
+function encode(){
+
+const code =
+document.getElementById("input").value;
+
+document.getElementById("output").value =
+btoa(code);
+
+}
+
+function decode(){
+
+const code =
+document.getElementById("input").value;
+
+document.getElementById("output").value =
+atob(code);
+
+}
+
+function copy(){
+
+const out =
+document.getElementById("output");
+
+out.select();
+out.setSelectionRange(0,99999);
+
+navigator.clipboard.writeText(out.value);
+
+alert("コピーしました");
+
+}
+
 </script>
 
 </body>
