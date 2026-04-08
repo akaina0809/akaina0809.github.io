@@ -34,6 +34,7 @@ button{
 <button onclick="obf()">難読化</button>
 <button onclick="encode()">暗号化(Base64)</button>
 <button onclick="decode()">復元(Base64)</button>
+<button onclick="deobf()">難読化コード復元</button>
 <button onclick="copy()">Copy</button>
 
 <h2>出力</h2>
@@ -81,7 +82,6 @@ function encode(){
 function decode(){
   const code = document.getElementById("input").value.trim();
 
-  // Base64チェック
   if (!isBase64(code)) {
     document.getElementById("output").value =
       "Base64ではありません（難読化コードの可能性）\n" +
@@ -91,14 +91,9 @@ function decode(){
 
   try {
     let str = code;
-
-    // URLセーフ対応
     str = str.replace(/-/g, '+').replace(/_/g, '/');
-
-    // パディング補完
     while (str.length % 4) str += '=';
 
-    // デコード
     const decoded = decodeURIComponent(
       Array.prototype.map.call(atob(str), c =>
         '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
@@ -108,16 +103,57 @@ function decode(){
     document.getElementById("output").value = decoded;
 
   } catch (e) {
-
     document.getElementById("output").value =
       "デコード失敗\n" +
       "Error: " + e.message + "\n" +
       "ID: " + code.slice(0, 40);
+  }
+}
 
-    console.error("Decode Error:", {
-      message: e.message,
-      input: code
-    });
+// ===== 難読化コード復元 =====
+function deobf(){
+  const code = document.getElementById("input").value;
+
+  try {
+    const logs = [];
+    const consoleMock = {
+      log: (...args) => logs.push(args.join(" ")),
+      error: (...args) => logs.push("ERROR: " + args.join(" "))
+    };
+
+    const wrapped = `
+      (function(){
+        const console = arguments[0];
+        ${code}
+
+        // _0x系関数を探して展開
+        for (let key in window) {
+          try {
+            if (typeof window[key] === "function" && key.startsWith("_0x")) {
+              for (let i = 0; i < 300; i++) {
+                try {
+                  console.log(key + "(" + i + ") = " + window[key](i));
+                } catch(e){}
+              }
+            }
+          } catch(e){}
+        }
+      })
+    `;
+
+    eval(wrapped)(consoleMock);
+
+    if (logs.length === 0) {
+      document.getElementById("output").value =
+        "復元できませんでした（構造違いの可能性）";
+    } else {
+      document.getElementById("output").value =
+        logs.join("\n");
+    }
+
+  } catch (e) {
+    document.getElementById("output").value =
+      "復元失敗\n" + e.message;
   }
 }
 
