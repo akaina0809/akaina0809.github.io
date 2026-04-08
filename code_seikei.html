@@ -3,24 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <title>JS 暗号化ツール</title>
-  <link rel="stylesheet" type="text/css" href="./mi/style.css">
-  <!-- ブラウザ用ファビコン -->
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/131579504?v=2" type="image/png">
-  <!-- iOS / iPhone ホーム画面用 -->
-  <link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/131579504?v=2">
-  <meta charset="utf-8" />
-  <meta name="Description" content="minecraft 系で役に立つかも？" />
-  <meta name="theme-color" content="#f3fca3" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<link rel="stylesheet" type="text/css" href="./mi/style.css">
+<link rel="icon" href="https://avatars.githubusercontent.com/u/131579504?v=2" type="image/png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/131579504?v=2">
+
+<meta name="Description" content="minecraft 系で役に立つかも？">
+<meta name="theme-color" content="#f3fca3">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
 
 <style>
 textarea{
-width:90%;
-height:150px;
+  width:90%;
+  height:150px;
 }
 button{
-margin:5px;
+  margin:5px;
 }
 </style>
 
@@ -41,59 +41,87 @@ margin:5px;
 
 <script>
 
+// ===== 難読化 =====
 function obf(){
+  const code = document.getElementById("input").value;
 
-const code =
-document.getElementById("input").value;
+  const result = JavaScriptObfuscator.obfuscate(code,{
+    compact:true,
+    controlFlowFlattening:true,
+    controlFlowFlatteningThreshold:1,
+    numbersToExpressions:true,
+    stringArray:true,
+    stringArrayEncoding:["base64"],
+    stringArrayThreshold:1
+  });
 
-const result =
-JavaScriptObfuscator.obfuscate(code,{
-compact:true,
-controlFlowFlattening:true,
-controlFlowFlatteningThreshold:1,
-numbersToExpressions:true,
-stringArray:true,
-stringArrayEncoding:["base64"],
-stringArrayThreshold:1
-});
-
-document.getElementById("output").value =
-result.getObfuscatedCode();
-
+  document.getElementById("output").value =
+    result.getObfuscatedCode();
 }
 
+// ===== Base64エンコード（UTF-8対応）=====
 function encode(){
+  const code = document.getElementById("input").value;
 
-const code =
-document.getElementById("input").value;
-
-document.getElementById("output").value =
-btoa(code);
-
+  try {
+    const encoded = btoa(unescape(encodeURIComponent(code)));
+    document.getElementById("output").value = encoded;
+  } catch (e) {
+    document.getElementById("output").value =
+      "エンコード失敗\n" + e.message;
+  }
 }
 
+// ===== Base64デコード（強化版）=====
 function decode(){
+  const code = document.getElementById("input").value;
 
-const code =
-document.getElementById("input").value;
+  try {
+    let str = code.trim();
 
-document.getElementById("output").value =
-atob(code);
+    // URLセーフBase64対応
+    str = str.replace(/-/g, '+').replace(/_/g, '/');
 
+    // パディング補完
+    while (str.length % 4) str += '=';
+
+    // デコード
+    const decoded = decodeURIComponent(
+      Array.prototype.map.call(atob(str), c =>
+        '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+      ).join('')
+    );
+
+    document.getElementById("output").value = decoded;
+
+  } catch (e) {
+
+    // エラーID（入力の先頭）
+    const errorId = code.slice(0, 30);
+
+    document.getElementById("output").value =
+      "デコード失敗\n" +
+      "Error: " + e.message + "\n" +
+      "ID: " + errorId;
+
+    console.error("Decode Error:", {
+      message: e.message,
+      input: code,
+      id: errorId
+    });
+  }
 }
 
+// ===== コピー =====
 function copy(){
+  const out = document.getElementById("output");
 
-const out =
-document.getElementById("output");
+  out.select();
+  out.setSelectionRange(0,99999);
 
-out.select();
-out.setSelectionRange(0,99999);
+  navigator.clipboard.writeText(out.value);
 
-navigator.clipboard.writeText(out.value);
-
-alert("コピーしました");
-
+  alert("コピーしました");
 }
 
 </script>
