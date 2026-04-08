@@ -41,6 +41,11 @@ button{
 
 <script>
 
+// ===== Base64判定 =====
+function isBase64(str){
+  return /^[A-Za-z0-9+/=_-]+$/.test(str);
+}
+
 // ===== 難読化 =====
 function obf(){
   const code = document.getElementById("input").value;
@@ -59,7 +64,7 @@ function obf(){
     result.getObfuscatedCode();
 }
 
-// ===== Base64エンコード（UTF-8対応）=====
+// ===== エンコード =====
 function encode(){
   const code = document.getElementById("input").value;
 
@@ -72,14 +77,22 @@ function encode(){
   }
 }
 
-// ===== Base64デコード（強化版）=====
+// ===== デコード =====
 function decode(){
-  const code = document.getElementById("input").value;
+  const code = document.getElementById("input").value.trim();
+
+  // Base64チェック
+  if (!isBase64(code)) {
+    document.getElementById("output").value =
+      "Base64ではありません（難読化コードの可能性）\n" +
+      "ID: " + code.slice(0, 40);
+    return;
+  }
 
   try {
-    let str = code.trim();
+    let str = code;
 
-    // URLセーフBase64対応
+    // URLセーフ対応
     str = str.replace(/-/g, '+').replace(/_/g, '/');
 
     // パディング補完
@@ -96,18 +109,14 @@ function decode(){
 
   } catch (e) {
 
-    // エラーID（入力の先頭）
-    const errorId = code.slice(0, 30);
-
     document.getElementById("output").value =
       "デコード失敗\n" +
       "Error: " + e.message + "\n" +
-      "ID: " + errorId;
+      "ID: " + code.slice(0, 40);
 
     console.error("Decode Error:", {
       message: e.message,
-      input: code,
-      id: errorId
+      input: code
     });
   }
 }
