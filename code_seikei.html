@@ -2,197 +2,96 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JS 解析ツール（完全版）</title>
-
-<link rel="icon" href="https://avatars.githubusercontent.com/u/131579504?v=2">
-
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<title>JS 暗号化ツール</title>
+  <link rel="stylesheet" type="text/css" href="./mi/style.css">
+  <!-- ブラウザ用ファビコン -->
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/131579504?v=2" type="image/png">
+  <!-- iOS / iPhone ホーム画面用 -->
+  <link rel="apple-touch-icon" sizes="180x180" href="https://avatars.githubusercontent.com/u/131579504?v=2">
+  <meta charset="utf-8" />
+  <meta name="Description" content="minecraft 系で役に立つかも？" />
+  <meta name="theme-color" content="#f3fca3" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
 
 <style>
-body { font-family: sans-serif; }
-textarea {
-  width: 95%;
-  height: 160px;
-  margin-bottom: 10px;
+textarea{
+width:90%;
+height:150px;
 }
-button {
-  margin: 5px;
-  padding: 6px 10px;
+button{
+margin:5px;
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <h2>入力</h2>
 <textarea id="input"></textarea>
+<br>
 
-<div>
 <button onclick="obf()">難読化</button>
 <button onclick="copy()">Copy</button>
-</div>
 
 <h2>出力</h2>
 <textarea id="output"></textarea>
 
 <script>
 
-// ===== Base64判定 =====
-function isBase64(str){
-  return /^[A-Za-z0-9+/=_-]+$/.test(str);
-}
-
-// ===== 難読化 =====
 function obf(){
-  const code = input.value;
 
-  const result = JavaScriptObfuscator.obfuscate(code,{
-    compact:true,
-    controlFlowFlattening:true,
-    controlFlowFlatteningThreshold:1,
-    numbersToExpressions:true,
-    stringArray:true,
-    stringArrayEncoding:["base64"],
-    stringArrayThreshold:1
-  });
+const code =
+document.getElementById("input").value;
 
-  output.value = result.getObfuscatedCode();
+const result =
+JavaScriptObfuscator.obfuscate(code,{
+compact:true,
+controlFlowFlattening:true,
+controlFlowFlatteningThreshold:1,
+numbersToExpressions:true,
+stringArray:true,
+stringArrayEncoding:["base64"],
+stringArrayThreshold:1
+});
+
+document.getElementById("output").value =
+result.getObfuscatedCode();
+
 }
 
-// ===== Base64エンコード =====
 function encode(){
-  try{
-    output.value = btoa(unescape(encodeURIComponent(input.value)));
-  }catch(e){
-    output.value = "エンコード失敗\n" + e.message;
-  }
+
+const code =
+document.getElementById("input").value;
+
+document.getElementById("output").value =
+btoa(code);
+
 }
 
-// ===== Base64デコード =====
 function decode(){
-  const code = input.value.trim();
 
-  if(!isBase64(code)){
-    output.value = "Base64ではない\nID: " + code.slice(0,40);
-    return;
-  }
+const code =
+document.getElementById("input").value;
 
-  try{
-    let str = code.replace(/-/g,'+').replace(/_/g,'/');
-    while(str.length % 4) str += '=';
+document.getElementById("output").value =
+atob(code);
 
-    const decoded = decodeURIComponent(
-      Array.from(atob(str))
-      .map(c => '%' + c.charCodeAt(0).toString(16).padStart(2,'0'))
-      .join('')
-    );
-
-    output.value = decoded;
-
-  }catch(e){
-    output.value = "デコード失敗\n" + e.message;
-  }
 }
 
-// ===== 簡易復元 =====
-function deobf(){
-  let code = input.value;
-
-  try{
-    code = code.replace(/import[\s\S]*?;/g,"");
-
-    const logs = [];
-    const consoleMock = {
-      log:(...a)=>logs.push(a.join(" "))
-    };
-
-    eval(`
-      (function(console){
-        ${code}
-        if(typeof _0x64bd5b==="function"){
-          for(let i=0;i<200;i++){
-            try{console.log(_0x64bd5b(i))}catch{}
-          }
-        }
-      })
-    `)(consoleMock);
-
-    output.value = logs.join("\n") || "取得なし";
-
-  }catch(e){
-    output.value = "復元失敗\n" + e.message;
-  }
-}
-
-// ===== 完全復元 =====
-function fullDeobf(){
-  let code = input.value;
-
-  try{
-    // import削除
-    code = code.replace(/import[\s\S]*?;/g,"");
-
-    const win = eval(`(function(){ ${code}; return window })()`);
-
-    let decoder=null;
-
-    for(let k in win){
-      if(typeof win[k]==="function" && k.startsWith("_0x")){
-        decoder = win[k];
-        break;
-      }
-    }
-
-    if(!decoder){
-      output.value = "デコーダが見つからない";
-      return;
-    }
-
-    // マップ生成
-    const map = {};
-    for(let i=0;i<500;i++){
-      try{ map[i]=decoder(i); }catch{}
-    }
-
-    let result = code;
-
-    // 置換
-    for(let i in map){
-      const v = map[i];
-      if(typeof v==="string"){
-        const safe = v.replace(/'/g,"\\'");
-        result = result.replace(
-          new RegExp(`_0x[a-zA-Z0-9]+\\(${i}\\)`,"g"),
-          `'${safe}'`
-        );
-      }
-    }
-
-    // リネーム
-    let count=0;
-    result = result.replace(/_0x[a-zA-Z0-9]+/g,()=>`var_${++count}`);
-
-    // 整形
-    result = result
-      .replace(/;/g,";\n")
-      .replace(/{/g,"{\n")
-      .replace(/}/g,"\n}")
-      .replace(/\n+/g,"\n");
-
-    output.value = result;
-
-  }catch(e){
-    output.value = "完全復元失敗\n" + e.message;
-  }
-}
-
-// ===== コピー =====
 function copy(){
-  output.select();
-  document.execCommand("copy");
-  alert("コピーしました");
+
+const out =
+document.getElementById("output");
+
+out.select();
+out.setSelectionRange(0,99999);
+
+navigator.clipboard.writeText(out.value);
+
+alert("コピーしました");
+
 }
 
 </script>
